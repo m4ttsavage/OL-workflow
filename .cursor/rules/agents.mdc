@@ -1,0 +1,10 @@
+---
+description: Project agent contract — always follow AGENTS.md (L0)
+alwaysApply: true
+---
+
+# Project agents
+
+Always follow `AGENTS.md` at the repo root. It is the single L0 contract: how we work, where docs live, and how to verify.
+
+Do not copy rules from `AGENTS.md` into other files. Point to it (or to a dedicated L2 doc) instead.
