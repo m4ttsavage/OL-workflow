@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Create global custom fields and select options from config/taxonomy.json.
 
-Requires a working classic Atlassian API token (jira_admin_veridian currently 401).
+Requires a working classic Atlassian API token (`jira_admin_token` preferred, then `jira_admin_veridian`).
 """
 
 from __future__ import annotations

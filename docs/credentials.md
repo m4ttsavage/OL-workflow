@@ -4,7 +4,8 @@ Never commit values. Never put tokens in browser JavaScript or Lovable client co
 
 | Name | Where | Used for |
 | --- | --- | --- |
-| `jira_admin_veridian` | Cursor / cloud-agent secret | Jira REST admin (fields, SLAs, automation). This agent still sees an **ATCTT scoped** token and gets HTTP 401 on site REST. Store a **classic** API token (created at https://id.atlassian.com/manage-profile/security/api-tokens, typically starts with `ATATT`) under the same name, then re-run `python scripts/configure_jira.py`. |
+| `jira_admin_token` | Cursor / cloud-agent secret | **Preferred** Jira REST admin token (classic `ATATT…`). Scripts read this first. |
+| `jira_admin_veridian` | Cursor / cloud-agent secret | Fallback. The value injected in the first run was a scoped `ATCTT` token and returns HTTP 401. |
 | `ATLASSIAN_EMAIL` | env | `matthewmsavage@gmail.com` |
 | `ATLASSIAN_BASE_URL` | env | `https://veridian-dynamics.atlassian.net` |
 | `ATLASSIAN_CLOUD_ID` | env | `2cddf272-587f-44fe-92ed-d157674c74f1` |

@@ -1,4 +1,4 @@
-"""Jira Cloud REST helper. Auth: ATLASSIAN_EMAIL + jira_admin_veridian (or ATLASSIAN_API_TOKEN)."""
+"""Jira Cloud REST helper. Auth: ATLASSIAN_EMAIL + jira_admin_token (preferred), then jira_admin_veridian / ATLASSIAN_API_TOKEN."""
 
 from __future__ import annotations
 
@@ -11,14 +11,23 @@ from typing import Any
 
 BASE = os.environ.get("ATLASSIAN_BASE_URL", "https://veridian-dynamics.atlassian.net").rstrip("/")
 EMAIL = os.environ.get("ATLASSIAN_EMAIL", "matthewmsavage@gmail.com")
-TOKEN = os.environ.get("ATLASSIAN_API_TOKEN") or os.environ.get("jira_admin_veridian", "")
+def _token() -> str:
+    for key in ("jira_admin_token", "ATLASSIAN_API_TOKEN", "jira_admin_veridian"):
+        value = os.environ.get(key, "")
+        if value:
+            return value
+    return ""
+
+
+TOKEN = _token()
+CLOUD_ID = os.environ.get("ATLASSIAN_CLOUD_ID", "2cddf272-587f-44fe-92ed-d157674c74f1")
 
 
 def _auth_header() -> str:
     import base64
 
     if not TOKEN:
-        raise SystemExit("Set jira_admin_veridian or ATLASSIAN_API_TOKEN")
+        raise SystemExit("Set jira_admin_token (preferred) or jira_admin_veridian / ATLASSIAN_API_TOKEN")
     raw = base64.b64encode(f"{EMAIL}:{TOKEN}".encode()).decode()
     return f"Basic {raw}"
 
