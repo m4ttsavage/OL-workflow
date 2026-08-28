@@ -7,10 +7,11 @@ Always follow [`AGENTS.MD`](AGENTS.MD). Taxonomy lives in [`config/taxonomy.json
 ## Quick start
 
 ```bash
-# 1. Classic API token as jira_admin_veridian or ATLASSIAN_API_TOKEN
+# 1. Classic API token as jira_admin_token (preferred) or jira_admin_veridian
 python scripts/jira_client.py          # probe auth
 python scripts/configure_jira.py       # create global custom fields
-# Then associate fields on VDSD/VDV screens (docs/ui-runbooks.md)
+python scripts/associate_screens.py    # add fields to VDSD/VDV screens
+python scripts/update_workflows.py    # Promote to Engineering + In Review
 
 # 2. Submit
 python scripts/submit_intake.py path/to/payload.json --source vdsd

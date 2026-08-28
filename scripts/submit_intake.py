@@ -27,7 +27,7 @@ def main() -> int:
     created = jira.post("/rest/api/3/issue", {"fields": fields})
     key = created["key"]
     print(key)
-    print(f"{jira.BASE}/browse/{key}")
+    print(f"{jira.SITE}/browse/{key}")
     return 0
 
 

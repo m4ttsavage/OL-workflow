@@ -1,4 +1,8 @@
-"""Jira Cloud REST helper. Auth: ATLASSIAN_EMAIL + jira_admin_token (preferred), then jira_admin_veridian / ATLASSIAN_API_TOKEN."""
+"""Jira Cloud REST helper. Auth: ATLASSIAN_EMAIL + jira_admin_token (preferred).
+
+Classic tokens for this site authenticate against api.atlassian.com/ex/jira/{cloudId},
+not https://veridian-dynamics.atlassian.net.
+"""
 
 from __future__ import annotations
 
@@ -9,8 +13,12 @@ import urllib.error
 import urllib.request
 from typing import Any
 
-BASE = os.environ.get("ATLASSIAN_BASE_URL", "https://veridian-dynamics.atlassian.net").rstrip("/")
+SITE = os.environ.get("ATLASSIAN_BASE_URL", "https://veridian-dynamics.atlassian.net").rstrip("/")
 EMAIL = os.environ.get("ATLASSIAN_EMAIL", "matthewmsavage@gmail.com")
+CLOUD_ID = os.environ.get("ATLASSIAN_CLOUD_ID", "2cddf272-587f-44fe-92ed-d157674c74f1")
+BASE = os.environ.get("ATLASSIAN_API_BASE", f"https://api.atlassian.com/ex/jira/{CLOUD_ID}").rstrip("/")
+
+
 def _token() -> str:
     for key in ("jira_admin_token", "ATLASSIAN_API_TOKEN", "jira_admin_veridian"):
         value = os.environ.get(key, "")
@@ -20,7 +28,6 @@ def _token() -> str:
 
 
 TOKEN = _token()
-CLOUD_ID = os.environ.get("ATLASSIAN_CLOUD_ID", "2cddf272-587f-44fe-92ed-d157674c74f1")
 
 
 def _auth_header() -> str:
@@ -66,6 +73,10 @@ def put(path: str, body: Any) -> Any:
     return request("PUT", path, body)
 
 
+def delete(path: str) -> Any:
+    return request("DELETE", path)
+
+
 def probe() -> dict:
     return get("/rest/api/3/myself")
 
@@ -74,6 +85,7 @@ if __name__ == "__main__":
     try:
         me = probe()
         print("authenticated as", me.get("displayName"), me.get("emailAddress"))
+        print("api base", BASE)
     except Exception as exc:
         print("auth failed:", exc, file=sys.stderr)
         sys.exit(1)

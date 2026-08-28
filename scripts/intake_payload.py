@@ -5,7 +5,11 @@ from __future__ import annotations
 
 import json
 import re
+import sys
 from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import field_ids  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[1]
 TAX = json.loads((ROOT / "config" / "taxonomy.json").read_text())
@@ -115,7 +119,7 @@ def jira_fields(payload: dict, source: str) -> dict:
         if item["id"] == payload.get("request_type") and source == "vdv":
             issue_type = item.get("vdv_issue_type") or "Task"
     priority = TAX["priority_map"].get(payload.get("priority"), payload.get("priority") or "Medium")
-    return {
+    fields = {
         "project": {"key": project},
         "issuetype": {"name": issue_type},
         "summary": payload["summary"],
@@ -123,3 +127,5 @@ def jira_fields(payload: dict, source: str) -> dict:
         "labels": labels(payload, source),
         "description": markdown_to_adf(description_markdown(payload, source)),
     }
+    fields.update(field_ids.custom_fields_from_payload(payload, source))
+    return fields

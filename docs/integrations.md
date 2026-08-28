@@ -53,4 +53,4 @@ Add Lovable secrets `ATLASSIAN_EMAIL` and `ATLASSIAN_API_TOKEN`. Local fallback 
 | Slack | error at implement | DMs / channel posts |
 | Lovable | ready | Public intake UX |
 
-Admin field/SLA/workflow create needs a working classic API token (`jira_admin_veridian` currently 401).
+Admin field/SLA/workflow create needs a working classic API token (`jira_admin_token` via `api.atlassian.com/ex/jira/{cloudId}`). Fields, screens, and workflows are configured. Portal request types, SLAs, and Automation import remain UI (REST 401).

@@ -1,6 +1,6 @@
 # Custom fields (VDSD and VDV)
 
-Create **once as global fields**, then add them to screens on both classic projects. **No prefixes.** Jira will assign `customfield_xxxxx` IDs; record them in the table at the bottom after `scripts/configure_jira.py` succeeds.
+Created **once as global fields**, then added to the shared SUP JSM screens used by both classic projects. **No prefixes.** Option maps live in [`config/field-ids.json`](../config/field-ids.json).
 
 Native JSM already has a field named **Request Type** (`customfield_10010`) for portal request types. Our taxonomy field is a separate select named **Intake Request Type** in Jira (display still “Request Type” on the public forms). Native **Organizations** (`customfield_10002`) is the JSM customer-org picker; our **Organization** field is a brand/department select.
 
@@ -20,7 +20,7 @@ Native JSM already has a field named **Request Type** (`customfield_10010`) for 
 | Value Type | Select | with Business Value USD | |
 | Source | Select | system | `vdsd` or `vdv` |
 | Counterpart Key | Text | system | Linked issue key after promote |
-| No PHI Acknowledgement | Checkbox / Select Yes-No | customer form | Must be Yes |
+| No PHI Acknowledgement | Radio Yes/No | customer form | Must be Yes |
 
 Priority uses **native Priority** (Highest/High/Medium/Low).
 
@@ -32,29 +32,32 @@ Priority uses **native Priority** (Highest/High/Medium/Low).
 4. If Impact Bucket is `Revenue` or `Cost`, require Business Value USD and Value Type.
 5. Customer form requires No PHI Acknowledgement = Yes. Reject any description that looks like patient identifiers (see `scripts/submit_intake.py`).
 
-## Fallback until fields exist
+## Scripts
 
-`scripts/configure_jira.py` talks to Jira REST with `ATLASSIAN_EMAIL` + `jira_admin_veridian`. If that token is rejected (current state: 401), issues still capture the contract in:
+```bash
+python scripts/configure_jira.py      # create fields + options; rewrite config/field-ids.json
+python scripts/associate_screens.py   # add fields to SUP screens 10010/10011/10012
+python scripts/backfill_fields.py      # write fields onto seeded VDSD/VDV issues
+```
 
-1. Description block `## Intake metadata` (key/value table)
-2. Labels listed in [taxonomy.md](taxonomy.md)
+`scripts/intake_payload.jira_fields` sets `customfield_*` when `config/field-ids.json` is present, and still writes labels plus the `## Intake metadata` description table.
+
+Seeded issues **VDSD-1..8** and **VDV-1..5** were backfilled from `config/seed-requests.json` (August 2026).
 
 ## Name → ID map
 
-Fill after a successful configure run:
-
 | Name | Field ID | Context ID |
 | --- | --- | --- |
-| Requester Name | | |
-| Requester Email | | |
-| Organization | | |
-| Organization Other | | |
-| Intake Request Type | | |
-| Clinical Program | | |
-| Subprogram | | |
-| Impact Bucket | | |
-| Business Value USD | | |
-| Value Type | | |
-| Source | | |
-| Counterpart Key | | |
-| No PHI Acknowledgement | | |
+| Requester Name | customfield_10078 | 10184 |
+| Requester Email | customfield_10079 | 10185 |
+| Organization | customfield_10080 | 10186 |
+| Organization Other | customfield_10081 | 10187 |
+| Intake Request Type | customfield_10082 | 10188 |
+| Clinical Program | customfield_10083 | 10189 |
+| Subprogram | customfield_10084 | 10190 |
+| Impact Bucket | customfield_10085 | 10191 |
+| Business Value USD | customfield_10086 | 10192 |
+| Value Type | customfield_10087 | 10193 |
+| Source | customfield_10088 | 10194 |
+| Counterpart Key | customfield_10089 | 10195 |
+| No PHI Acknowledgement | customfield_10090 | 10196 |

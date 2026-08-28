@@ -1,32 +1,28 @@
 # Jira / JSM UI runbook (admin)
 
-Use this when REST admin calls fail (scoped API token 401). Site: https://veridian-dynamics.atlassian.net
+Site: https://veridian-dynamics.atlassian.net
 
-## Shared custom fields (Settings → Issues → Custom fields)
+## Done via REST (`jira_admin_token`)
 
-Create each field in [fields.md](fields.md), Context = Apply to all issues, then **Associate to screens** for both **VDSD** and **VDV** (Default/Create/Edit/View).
+- Global custom fields + options: `python scripts/configure_jira.py`
+- Screens (SUP 10010/10011/10012, shared by VDSD and VDV): `python scripts/associate_screens.py`
+- Workflows: `python scripts/update_workflows.py`
+  - **Promote to Engineering** on SUP Default ESM (Submit a request)
+  - **In Review** on SUP JSM default (Task) and Simple ESM (Ask a question)
 
-Select options must match IDs in `config/taxonomy.json`.
+## Still UI-only (REST 401 / no write API)
 
-## VDSD request types (Project settings → Request types)
+### VDSD request types (Project settings → Request types)
+
+`GET /rest/servicedeskapi/servicedesk/1/requesttype` works (Ask a question, Submit a request or incident, Emailed request). `POST` to create types returns **401 scope does not match**.
 
 Keep native portal types as fallback. Add portal request types that match taxonomy **labels** (not IDs):
 
 Feature, Bug, Incident, Operational change, Access, Question, Compliance, New program launch, Pharmacy / fulfillment, Clinical operations, Internal IT.
 
-Portal URL: **VDSD → Channels → Portal**. Internal users use Lovable `/internal` (and can also use the VDV portal).
+Portal: **VDSD → Channels → Portal**. Intake Request Type on the issue is the taxonomy select (`customfield_10082`), independent of portal request type.
 
-Issue types on both classic projects today: Submit a request or incident, Ask a question, Emailed request, Task, Sub-task. Feature/Bug are **intake request types** (labels + description table), not extra Jira issue types, until you add them in the UI.
-
-## VDSD workflow
-
-Project settings → Workflows → edit. Add status **Promote to Engineering**. Add transition from In progress / Triage to that status, then to Resolved.
-
-## VDV workflow
-
-Add **In Review** between In Progress and Done.
-
-## SLAs (VDSD → Project settings → SLAs)
+### SLAs (VDSD → Project settings → SLAs)
 
 Create calendar **Veridian Business Hours** (America/Chicago 09:00–17:00 Mon–Fri) and **24x7**.
 
@@ -35,13 +31,15 @@ Create calendar **Veridian Business Hours** (America/Chicago 09:00–17:00 Mon�
 | Time to first response | 24x7 for P1, business otherwise | 15m | 1h | 4h | 1d |
 | Time to resolution | same | 4h | 8h | 3d | 10d |
 
-## Automation
+### Automation
 
-Project settings → Automation → Import:
+Project settings → Automation → Create / Import (JSON import may be rejected; recreate steps):
 
-1. `automation/promote-to-vdv.json`
+1. `automation/promote-to-vdv.json` — trigger: transitioned to **Promote to Engineering**
 2. `automation/status-sync.json`
 3. `automation/slack-notify.json` (channel `#dev-updates`)
+
+Until Automation is imported, use `python scripts/promote_request.py VDSD-n`.
 
 ## GitHub for Jira
 

@@ -6,17 +6,19 @@ Target statuses:
 
 `Submitted` → `Triage` → `Waiting for customer` | `In progress` | `Promote to Engineering` → `Resolved` → `Closed`
 
-Observed on the live classic JSM workflow (August 2026):
+Live mapping on **SUP: Default ESM workflow for Jira Service Management** (used by issue type **Submit a request or incident**, id 10010):
 
-| Desired | Live status today | Transition name |
-| --- | --- | --- |
-| Submitted | **To Do** (id 10011) or **Open** (id 1) depending on request type | (initial) |
-| Triage / In progress | **In Progress** (id 3) | Start |
-| Waiting for customer / In Review | **Pending** (id 10013) | In review |
-| Promote to Engineering | **not present** — add this status (category In Progress) | add transition from In Progress |
-| Resolved / Closed | add or map to JSM Resolved / Closed | |
+| Desired | Live status | id | Transition |
+| --- | --- | --- | --- |
+| Submitted | **To Do** | 10011 | (initial Create) |
+| Triage / In progress | **In Progress** | 3 | Start |
+| Waiting for customer | **Pending** | 10013 | In review |
+| Promote to Engineering | **Promote to Engineering** | 10020 | Promote to Engineering (from In Progress) |
+| Resolved | **Done** | 10012 | Resolved |
 
-Until **Promote to Engineering** exists, use `python scripts/promote_request.py VDSD-n` (or Atlassian MCP create + Polarise link). Live promotions already created VDV-1/3/4/5.
+`python scripts/update_workflows.py` added status **Promote to Engineering** and the transition from In Progress. Verified on **VDSD-7** (In Progress → transition 151).
+
+Ask a question (10011) uses **SUP: Simple ESM**. Task (10013) uses **SUP: Jira Service Management default workflow**. Both now include **In Review** (id 10021). New customer intake via `submit_intake.py --source vdsd` creates **Submit a request or incident**, so Promote is on the path agents use.
 
 ### Promote to Engineering
 
@@ -29,24 +31,25 @@ When an agent transitions a VDSD issue to **Promote to Engineering** (or clicks 
    - `createIssueLink`: inwardIssue = VDSD key, outwardIssue = VDV key, type = `Polaris work item link` (inward “is implemented by”, outward “implements”).
 5. Copy reporter and watchers by email.
 
-Automation rule JSON: [`automation/promote-to-vdv.json`](../automation/promote-to-vdv.json). Import under **Project settings → Automation** if REST create is unavailable. Runtime promote: `python scripts/promote_request.py VDSD-123`.
+Automation rule JSON: [`automation/promote-to-vdv.json`](../automation/promote-to-vdv.json). Import under **Project settings → Automation** — REST create of Automation rules returns 401 (`scope does not match`). Runtime promote: `python scripts/promote_request.py VDSD-123` (copies custom fields and writes Counterpart Key).
 
 ## VDV (internal engineering)
 
 Target: `To Do` → `In Progress` → `In Review` → `Done`
 
-Live mapping on the classic JSM workflow:
+Live mapping on **SUP: Jira Service Management default workflow** (Task issue type 10013):
 
-| Desired | Live status | Transition name |
-| --- | --- | --- |
-| To Do | **Open** (id 1) | (initial) |
-| In Progress | **Work in progress** (id 10010) | Start progress |
-| In Review | **Pending** (id 10013) | Pending |
-| Done | **Done** (id 10012) | Mark as done |
+| Desired | Live status | id | Transition |
+| --- | --- | --- | --- |
+| To Do | **Open** | 1 | (initial) |
+| In Progress | **Work in progress** | 10010 | Start progress |
+| In Review | **In Review** | 10021 | In Review (from Open or Work in progress) |
+| Waiting / parked | **Pending** | 10013 | Pending |
+| Done | **Done** | 10012 | Mark as done |
 
-Do not rename statuses in the first pass; GitHub-for-Jira keys off `VDV-n`, not status names. Optional: add a status named **In Review** if you want the name to match the software workflow. GitHub PR open/merge comments on the VDV issue; merge does not auto-transition.
+GitHub-for-Jira keys off `VDV-n`, not status names. GitHub PR open/merge comments on the VDV issue; merge does not auto-transition.
 
-Bidirectional: when VDV moves to In Review or Done, comment on the linked VDSD issue. VDSD **Waiting for customer** does not move VDV.
+Bidirectional: when VDV moves to In Review or Done, comment on the linked VDSD issue. VDSD **Waiting for customer** does not move VDV. Status-sync Automation is UI-import only.
 
 ## SLAs (VDSD only)
 
@@ -59,6 +62,8 @@ Calendar: America/Chicago, Mon–Fri 09:00–17:00. **P1 uses 24×7**.
 | P3 / Medium | 4 hours | 3 business days |
 | P4 / Low | 1 business day | 10 business days |
 
-Configure in **VDSD → Project settings → SLAs**. Attach both goals to all request types. Pause Time to resolution on Waiting for customer.
+JSM SLA **create** APIs are not available with the classic API token via `api.atlassian.com` (legacy `/rest/servicedesk/1/.../sla` returns 401 `scope does not match`). `GET /rest/servicedeskapi/request/VDSD-1/sla` currently returns no goals.
+
+Configure in **VDSD → Project settings → SLAs**. Attach both goals to all request types. Pause Time to resolution on Waiting for customer / Pending.
 
 UI click-path: [`docs/ui-runbooks.md`](ui-runbooks.md).

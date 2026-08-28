@@ -109,25 +109,44 @@ def main() -> int:
     add_options(source["id"], context_id(source["id"]), ["vdsd", "vdv"])
     add_options(phi["id"], context_id(phi["id"]), ["Yes", "No"])
 
-    mapping = {
-        "Requester Name": name_cf["id"],
-        "Requester Email": email_cf["id"],
-        "Organization": org_cf["id"],
-        "Organization Other": org_other["id"],
-        "Intake Request Type": rtype["id"],
-        "Clinical Program": program["id"],
-        "Subprogram": sub["id"],
-        "Impact Bucket": impact["id"],
-        "Business Value USD": value["id"],
-        "Value Type": vtype["id"],
-        "Source": source["id"],
-        "Counterpart Key": counterpart["id"],
-        "No PHI Acknowledgement": phi["id"],
+    created = {
+        "Requester Name": name_cf,
+        "Requester Email": email_cf,
+        "Organization": org_cf,
+        "Organization Other": org_other,
+        "Intake Request Type": rtype,
+        "Clinical Program": program,
+        "Subprogram": sub,
+        "Impact Bucket": impact,
+        "Business Value USD": value,
+        "Value Type": vtype,
+        "Source": source,
+        "Counterpart Key": counterpart,
+        "No PHI Acknowledgement": phi,
     }
+    select_names = {
+        "Organization",
+        "Intake Request Type",
+        "Clinical Program",
+        "Subprogram",
+        "Impact Bucket",
+        "Value Type",
+        "Source",
+        "No PHI Acknowledgement",
+    }
+    mapping = {}
+    for name, rec in created.items():
+        fid = rec["id"]
+        ctx = context_id(fid)
+        entry: dict = {"id": fid, "contextId": ctx}
+        if name in select_names:
+            opts = jira.get(f"/rest/api/3/field/{fid}/context/{ctx}/option")
+            entry["options"] = {opt["value"]: opt["id"] for opt in opts.get("values") or []}
+        mapping[name] = entry
     out = ROOT / "config" / "field-ids.json"
     out.write_text(json.dumps(mapping, indent=2) + "\n")
     print("wrote", out)
-    print("Associate these fields to VDSD and VDV screens (docs/ui-runbooks.md).")
+    print("Associate these fields to VDSD and VDV screens: python scripts/associate_screens.py")
     return 0
 
 

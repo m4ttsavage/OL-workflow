@@ -60,6 +60,13 @@ class IntakePayloadTests(unittest.TestCase):
         self.assertEqual(fields["project"]["key"], "VDSD")
         self.assertEqual(fields["description"]["type"], "doc")
         self.assertEqual(fields["priority"]["name"], "High")
+        self.assertEqual(fields["customfield_10078"], "Ava Chen")
+        self.assertEqual(fields["customfield_10079"], "ava.chen@northstar.example")
+        self.assertEqual(fields["customfield_10080"], {"id": "10049"})
+        self.assertEqual(fields["customfield_10082"], {"id": "10062"})
+        self.assertEqual(fields["customfield_10088"], {"id": "10141"})
+        self.assertEqual(fields["customfield_10090"], {"id": "10143"})
+        self.assertEqual(fields["customfield_10086"], 240000.0)
 
 
 if __name__ == "__main__":
