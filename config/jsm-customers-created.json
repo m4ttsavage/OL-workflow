@@ -1,0 +1,138 @@
+{
+  "service_desk_id": "1",
+  "service_desk_project_key": "VDSD",
+  "organizations": [
+    {
+      "name": "Northstar Wellness",
+      "slug": "northstar-wellness",
+      "id": "1",
+      "uuid": "fc1e21ec-5966-45a6-810e-2b09c50e9fea",
+      "customers": [
+        {
+          "display_name": "Ava Chen",
+          "role": "Brand ops",
+          "plus_tag": "northstar-wellness",
+          "email": "matthewmsavage+northstar-wellness@gmail.com",
+          "account_id": "qm:58a0269c-9e45-4483-9b5e-f1db6f70e866:f70fd726-02c0-4afc-86fd-29a09d35e89a"
+        },
+        {
+          "display_name": "Sofia Alvarez",
+          "role": "Ops",
+          "plus_tag": "northstar-wellness-ops",
+          "email": "matthewmsavage+northstar-wellness-ops@gmail.com",
+          "account_id": "qm:58a0269c-9e45-4483-9b5e-f1db6f70e866:ea33a9b4-7c26-487b-9c23-15e1349e33b6"
+        }
+      ]
+    },
+    {
+      "name": "Harbor Peak Health",
+      "slug": "harbor-peak-health",
+      "id": "2",
+      "uuid": "f7963adb-f947-4505-a2a0-3b4ae458b6a9",
+      "customers": [
+        {
+          "display_name": "Marcus Hale",
+          "role": "Fulfillment",
+          "plus_tag": "harbor-peak-health",
+          "email": "matthewmsavage+harbor-peak-health@gmail.com",
+          "account_id": "qm:58a0269c-9e45-4483-9b5e-f1db6f70e866:7a6d4107-a6cc-4bf5-9703-4d6e4bdb9797"
+        },
+        {
+          "display_name": "Chris Ng",
+          "role": "Portal admin",
+          "plus_tag": "harbor-peak-health-ops",
+          "email": "matthewmsavage+harbor-peak-health-ops@gmail.com",
+          "account_id": "qm:58a0269c-9e45-4483-9b5e-f1db6f70e866:c38e6358-87cd-4386-9b2e-db3683a79bcc"
+        }
+      ]
+    },
+    {
+      "name": "Lumen Clinic",
+      "slug": "lumen-clinic",
+      "id": "3",
+      "uuid": "344c4d9d-d374-4a72-a1af-c71e76824391",
+      "customers": [
+        {
+          "display_name": "Priya Nair",
+          "role": "Brand ops",
+          "plus_tag": "lumen-clinic",
+          "email": "matthewmsavage+lumen-clinic@gmail.com",
+          "account_id": "qm:58a0269c-9e45-4483-9b5e-f1db6f70e866:a80192e9-033b-4dae-a343-ec5bc596b605"
+        },
+        {
+          "display_name": "Elena Rossi",
+          "role": "Storefront",
+          "plus_tag": "lumen-clinic-ops",
+          "email": "matthewmsavage+lumen-clinic-ops@gmail.com",
+          "account_id": "qm:58a0269c-9e45-4483-9b5e-f1db6f70e866:1e364846-1cc6-4ea2-99f9-a5e0416f269d"
+        }
+      ]
+    },
+    {
+      "name": "Atlas Fitness Care",
+      "slug": "atlas-fitness-care",
+      "id": "4",
+      "uuid": "5b765f26-aab0-47ab-a93e-f6c42c087206",
+      "customers": [
+        {
+          "display_name": "Jon Park",
+          "role": "Pharmacy ops",
+          "plus_tag": "atlas-fitness-care",
+          "email": "matthewmsavage+atlas-fitness-care@gmail.com",
+          "account_id": "qm:58a0269c-9e45-4483-9b5e-f1db6f70e866:d346f0fb-d2fe-465c-b208-f5d2fa0ccb16"
+        },
+        {
+          "display_name": "Devon Brooks",
+          "role": "Compliance",
+          "plus_tag": "atlas-fitness-care-compliance",
+          "email": "matthewmsavage+atlas-fitness-care-compliance@gmail.com",
+          "account_id": "qm:58a0269c-9e45-4483-9b5e-f1db6f70e866:f9157ff3-5b98-4447-87a5-d3c590de5d5e"
+        }
+      ]
+    },
+    {
+      "name": "Cedar Ridge Telehealth",
+      "slug": "cedar-ridge-telehealth",
+      "id": "5",
+      "uuid": "0b0367f4-fc02-4871-92e0-1fb411cbff57",
+      "customers": [
+        {
+          "display_name": "Riley Cho",
+          "role": "Launchpad",
+          "plus_tag": "cedar-ridge-telehealth",
+          "email": "matthewmsavage+cedar-ridge-telehealth@gmail.com",
+          "account_id": "qm:58a0269c-9e45-4483-9b5e-f1db6f70e866:da7fed5a-9e0f-4894-981e-26491b324319"
+        },
+        {
+          "display_name": "Sam Okonkwo",
+          "role": "Care ops",
+          "plus_tag": "cedar-ridge-telehealth-ops",
+          "email": "matthewmsavage+cedar-ridge-telehealth-ops@gmail.com",
+          "account_id": "qm:58a0269c-9e45-4483-9b5e-f1db6f70e866:7e9a4a2f-f702-4da7-82b6-37fd5bc8120c"
+        }
+      ]
+    },
+    {
+      "name": "Summit Peak Wellness",
+      "slug": "summit-peak-wellness",
+      "id": "6",
+      "uuid": "a1acf546-4fea-4536-aeeb-b9c06c482010",
+      "customers": [
+        {
+          "display_name": "Jordan Velez",
+          "role": "Coaching",
+          "plus_tag": "summit-peak-wellness",
+          "email": "matthewmsavage+summit-peak-wellness@gmail.com",
+          "account_id": "qm:58a0269c-9e45-4483-9b5e-f1db6f70e866:bcdc9d0f-2206-4e06-8b4f-d52d71610aab"
+        },
+        {
+          "display_name": "Morgan Patel",
+          "role": "Clinical ops",
+          "plus_tag": "summit-peak-wellness-ops",
+          "email": "matthewmsavage+summit-peak-wellness-ops@gmail.com",
+          "account_id": "qm:58a0269c-9e45-4483-9b5e-f1db6f70e866:e0654fd0-52a2-4e2b-be3e-1804784db242"
+        }
+      ]
+    }
+  ]
+}

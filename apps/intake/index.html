@@ -83,7 +83,7 @@
         </select>
       </label>
       <label>Requester name <input id="requester_name" required /></label>
-      <label>Work email <input id="requester_email" type="email" required /></label>
+      <label>Work email <span class="hint">Test customers: matthewmsavage+[org-slug]@gmail.com</span><input id="requester_email" type="email" required /></label>
       <div class="row" id="watchers-row"><label>Watchers (emails, comma-separated)<input id="watchers" /></label></div>
       <label>Summary <input id="summary" required maxlength="255" /></label>
       <label>Description <textarea id="description" required></textarea></label>
@@ -135,8 +135,8 @@
       if (!(customer || internal)) return;
       $("form-title").textContent = customer ? "Customer request (VDSD)" : "Employee request (VDV)";
       fill($("organization"), customer
-        ? ["Northstar Wellness","Harbor Peak Health","Lumen Clinic","Atlas Fitness Care","Other"]
-        : ["IT","Clinical Ops","CS","RCM","People","Finance","Engineering","Veridian Dynamics Internal"]);
+        ? (tax?.organizations?.customer || ["Northstar Wellness","Harbor Peak Health","Lumen Clinic","Atlas Fitness Care","Cedar Ridge Telehealth","Summit Peak Wellness","Other"])
+        : (tax?.organizations?.internal || ["IT","Clinical Ops","CS","RCM","People","Finance","Engineering","Veridian Dynamics Internal"]));
       fill($("request_type"), requestTypes);
       fill($("clinical_program"), Object.keys(programs));
       fill($("impact_bucket"), ["Patient_Safety_NonPHI","Clinical_Quality_NonPHI","Revenue","Cost","Brand","Operations","Compliance"]);

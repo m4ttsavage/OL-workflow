@@ -46,6 +46,8 @@ def request(method: str, path: str, body: Any | None = None, extra_headers: dict
         "Accept": "application/json",
         "Content-Type": "application/json",
     }
+    if "/rest/servicedeskapi/" in url:
+        headers["X-ExperimentalApi"] = "opt-in"
     if extra_headers:
         headers.update(extra_headers)
     data = None if body is None else json.dumps(body).encode()

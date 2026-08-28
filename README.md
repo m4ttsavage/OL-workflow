@@ -12,6 +12,7 @@ python scripts/jira_client.py          # probe auth
 python scripts/configure_jira.py       # create global custom fields
 python scripts/associate_screens.py    # add fields to VDSD/VDV screens
 python scripts/update_workflows.py    # Promote to Engineering + In Review
+python scripts/seed_jsm_customers.py  # dummy orgs + plus-addressed customers on VDSD
 
 # 2. Submit (local)
 python scripts/submit_intake.py path/to/payload.json --source vdsd
@@ -23,18 +24,14 @@ python scripts/submit_intake.py path/to/payload.json --source vdsd
 python scripts/promote_request.py VDSD-123
 ```
 
-Local form (dependent fields, PHI checkbox): open [`apps/intake/index.html`](apps/intake/index.html).
+Customer submission: [JSM Help Center portal](https://veridian-dynamics.atlassian.net/servicedesk/customer/portal/1) (VDSD). Internal work is filed in project **VDV**.
 
-Public form (Lovable):
-
-- Published: https://veridian-intake.lovable.app (`/customer`, `/internal`)
-- Editor: https://lovable.dev/projects/f4958c29-f0e1-4e95-a908-1bb0c7975610
-- The form validates and returns copyable JSON (no Jira token in the browser).
-- Create the issue with **Actions → Submit intake** (`workflow_dispatch`) using repo secrets `JIRA_EMAIL` and `JIRA_API_TOKEN`. See [credentials](docs/credentials.md).
+Local form (dependent fields, PHI checkbox, operator demo): open [`apps/intake/index.html`](apps/intake/index.html). Create the issue with `scripts/submit_intake.py` or **Actions → Submit intake**. See [credentials](docs/credentials.md).
 
 ## Docs
 
 - [taxonomy](docs/taxonomy.md)
+- [JSM dummy orgs and customers](docs/jsm-customers.md)
 - [fields](docs/fields.md)
 - [workflows and SLAs](docs/workflows-and-slas.md)
 - [integrations](docs/integrations.md)
@@ -45,7 +42,7 @@ Public form (Lovable):
 
 ## PHI
 
-Jira, GitHub, Slack, and Lovable must not hold Protected Health Information. Customer intake requires an explicit acknowledgement.
+Jira, GitHub, and Slack must not hold Protected Health Information. Customer intake requires an explicit acknowledgement.
 
 ## Engineering repo
 

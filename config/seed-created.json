@@ -28,9 +28,9 @@
       { "vdv": "VDV-4", "vdsd": "VDSD-3", "pr": "https://github.com/m4ttsavage/OL-workflow/pull/3" }
     ]
   },
-  "lovable": {
-    "project_id": "f4958c29-f0e1-4e95-a908-1bb0c7975610",
-    "published": "https://veridian-intake.lovable.app"
+  "jsm_portal": {
+    "url": "https://veridian-dynamics.atlassian.net/servicedesk/customer/portal/1",
+    "service_desk_id": 1
   },
   "notes": "Custom fields created and backfilled on VDSD-1..8 and VDV-1..5. Promote to Engineering (status 10020) is on Submit a request; In Review (10021) is on Task. Portal request types, SLAs, and Automation import remain UI. Slack parents posted; invite Lem/Veronica/Phil/Linda to Jira for watcher DMs."
 }
