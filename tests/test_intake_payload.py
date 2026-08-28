@@ -71,6 +71,7 @@ class IntakePayloadTests(unittest.TestCase):
         self.assertEqual(fields["customfield_10088"], {"id": "10141"})
         self.assertEqual(fields["customfield_10090"], {"id": "10143"})
         self.assertEqual(fields["customfield_10086"], 240000.0)
+        self.assertEqual(fields["customfield_10002"], [{"id": "1"}])
 
     def test_resolve_source(self):
         import submit_intake
