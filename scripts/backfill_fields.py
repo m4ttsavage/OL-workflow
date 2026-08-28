@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Write custom fields on seeded VDSD/VDV issues from seed-requests.json."""
+"""Write custom fields on seeded VDSD / VDV / RND issues from seed-requests.json."""
 
 from __future__ import annotations
 
@@ -19,8 +19,9 @@ CREATED = json.loads((ROOT / "config" / "seed-created.json").read_text())
 def counterparts() -> dict[str, str]:
     out = {}
     for row in CREATED.get("promoted") or []:
-        out[row["vdsd"]] = row["vdv"]
-        out[row["vdv"]] = row["vdsd"]
+        eng = row.get("rnd") or row.get("vdv")
+        out[row["vdsd"]] = eng
+        out[eng] = row["vdsd"]
     return out
 
 
@@ -48,15 +49,16 @@ def main() -> int:
     for key, item in zip(vdsd_keys, vdsd_payloads):
         update_issue(key, item["payload"], "vdsd", cmap.get(key))
 
-    internal = [item for item in SEED if item["source"] == "vdv"]
+    internal = [item for item in SEED if item["source"] in ("rnd", "vdv")]
     for key, item in zip(CREATED.get("internal_direct") or [], internal):
-        update_issue(key, item["payload"], "vdv", None)
+        update_issue(key, item["payload"], item["source"], None)
 
     promoted_payloads = [item for item in SEED if item["source"] == "vdsd" and item.get("promote")]
     for pair, item in zip(CREATED.get("promoted") or [], promoted_payloads):
         payload = dict(item["payload"])
         payload["counterpart_key"] = pair["vdsd"]
-        update_issue(pair["vdv"], payload, "vdsd", pair["vdsd"])
+        eng = pair.get("rnd") or pair.get("vdv")
+        update_issue(eng, payload, "vdsd", pair["vdsd"])
     return 0
 
 

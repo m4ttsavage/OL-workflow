@@ -106,7 +106,9 @@ def custom_fields_from_payload(payload: dict, source: str) -> dict[str, Any]:
         put_select("No PHI Acknowledgement", "Yes")
     elif ack in (False, "No", "no"):
         put_select("No PHI Acknowledgement", "No")
-    org_id = jsm_organization_id(payload.get("organization"))
-    if org_id:
-        out["customfield_10002"] = [{"id": org_id}]
+    # Native JSM Organizations is customer-desk only; RND rejects it.
+    if source == "vdsd":
+        org_id = jsm_organization_id(payload.get("organization"))
+        if org_id:
+            out["customfield_10002"] = [{"id": org_id}]
     return out

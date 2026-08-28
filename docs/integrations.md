@@ -1,28 +1,32 @@
 # Integrations
 
 ```
-Customer form → VDSD → (promote) → VDV → GitHub DummyCompany
+Customer form → VDSD → (promote) → RND → GitHub DummyCompany
                  \                      /
                   → Slack #dev-updates (+ watcher DMs)
+
+Internal form → RND
 ```
 
-## JSM ↔ VDV
+**VDV** (Veridian Dynamics v2) is a leftover JSM project. Do not promote customer work there.
+
+## JSM ↔ RND
 
 - Stay in VDSD until triage. Only engineering-bound work is promoted.
 - Link type: **Polaris work item link** (`implements` / `is implemented by`).
 - Counterpart Key + labels `source:*`.
-- Script: `scripts/promote_request.py`.
-- Automation import: `automation/promote-to-vdv.json`.
+- Script: `scripts/promote_request.py` (Feature or New program launch → RND **Feature**; everything else → **Task**).
+- Automation import: `automation/promote-to-rnd.json` (always Task if imported as-is; prefer the script for work-type mapping and custom fields).
 
 ## GitHub
 
 Target repo: `m4ttsavage/DummyCompany` — **does not exist**, and GitHub MCP (`m4ttsavage`) returns **403** on `user/repos` create (`Resource not accessible by personal access token`). Engineering templates and demo PRs live in this control-plane repo (`m4ttsavage/OL-workflow`) until DummyCompany is created under that account.
 
-- Branch: `VDV-123-short-slug`
-- PR template requires `Jira: VDV-123` and optional `JSM: VDSD-45`
-- Workflow `.github/workflows/jira-key-required.yml` fails PRs without `VDV-\d+`
-- Workflow `.github/workflows/jira-comment.yml` comments on the VDV issue on PR open/merge and on release
-- GitHub-for-Jira is already installed; map the engineering repo to **VDV**
+- Branch: `RND-123-short-slug`
+- PR template requires `Jira: RND-123` and optional `JSM: VDSD-45`
+- Workflow `.github/workflows/jira-key-required.yml` fails PRs without `RND-\d+` (legacy `VDV-\d+` still passes)
+- Workflow `.github/workflows/jira-comment.yml` comments on the RND (or legacy VDV) issue on PR open/merge and on release
+- GitHub-for-Jira is already installed; map the engineering repo to **RND**
 
 ## Slack
 
@@ -40,7 +44,7 @@ Public pages (workspace The Shadow Realm, project **Veridian Intake Hub**):
 - Preview: https://id-preview--f4958c29-f0e1-4e95-a908-1bb0c7975610.lovable.app
 - Published: https://veridian-intake.lovable.app
 - `/customer` → VDSD
-- `/internal` → VDV
+- `/internal` → RND (update the published form if it still labels VDV)
 
 The published form validates and returns copyable JSON. Create the Jira issue with **Actions → Submit intake** (`workflow_dispatch`) and repo secrets `JIRA_EMAIL` + `JIRA_API_TOKEN` — do not put the token in Lovable. Local fallback forms: `apps/intake/`.
 

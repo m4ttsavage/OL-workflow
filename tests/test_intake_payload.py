@@ -77,8 +77,34 @@ class IntakePayloadTests(unittest.TestCase):
         import submit_intake
 
         self.assertEqual(submit_intake.resolve_source({"source": "vdsd"}, None), "vdsd")
+        self.assertEqual(submit_intake.resolve_source({}, "rnd"), "rnd")
         self.assertEqual(submit_intake.resolve_source({}, "vdv"), "vdv")
         self.assertIsNone(submit_intake.resolve_source({}, None))
+
+    def test_engineering_issue_types(self):
+        self.assertEqual(intake_payload.engineering_issue_type("Feature"), "Feature")
+        self.assertEqual(intake_payload.engineering_issue_type("New_Program_Launch"), "Feature")
+        self.assertEqual(intake_payload.engineering_issue_type("Compliance"), "Task")
+        self.assertEqual(intake_payload.engineering_issue_type("Bug"), "Task")
+        self.assertEqual(intake_payload.project_key("vdsd"), "VDSD")
+        self.assertEqual(intake_payload.project_key("rnd"), "RND")
+        self.assertEqual(intake_payload.project_key("vdv"), "VDV")
+
+    def test_internal_maps_to_rnd_without_jsm_org(self):
+        payload = SEED[0]["payload"]
+        fields = intake_payload.jira_fields(payload, "rnd")
+        self.assertEqual(fields["project"]["key"], "RND")
+        self.assertEqual(fields["issuetype"]["name"], "Feature")
+        self.assertEqual(fields["customfield_10078"], "Ava Chen")
+        self.assertNotIn("customfield_10002", fields)
+        self.assertEqual(fields["customfield_10088"], {"id": "10147"})
+        self.assertIn("source:rnd", intake_payload.labels(payload, "rnd"))
+
+    def test_compliance_internal_is_task(self):
+        payload = dict(SEED[7]["payload"])
+        fields = intake_payload.jira_fields(payload, "rnd")
+        self.assertEqual(fields["issuetype"]["name"], "Task")
+        self.assertEqual(fields["project"]["key"], "RND")
 
 
 class JsmCustomerTests(unittest.TestCase):

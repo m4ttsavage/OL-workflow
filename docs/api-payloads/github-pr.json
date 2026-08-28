@@ -1,6 +1,6 @@
 {
-  "title": "[VDV-1] Coaching drop-off prompts",
-  "head": "VDV-1-coaching-drop-off",
+  "title": "[RND-5] Coaching drop-off prompts",
+  "head": "RND-5-coaching-drop-off",
   "base": "main",
-  "body": "Jira: VDV-1\nJSM: VDSD-1\n\nImplements aftercare coaching prompts. No PHI.\n"
+  "body": "Jira: RND-5\nJSM: VDSD-1\n\nImplements aftercare coaching prompts. No PHI.\n"
 }

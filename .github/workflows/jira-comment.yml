@@ -1,4 +1,4 @@
-name: Comment on VDV issue
+name: Comment on RND issue
 
 on:
   pull_request:
@@ -26,9 +26,12 @@ jobs:
             exit 0
           fi
           blob="$TITLE $BODY $BRANCH"
-          key=$(grep -Eo 'VDV-[0-9]+' <<<"$blob" | head -n1 || true)
+          key=$(grep -Eo 'RND-[0-9]+' <<<"$blob" | head -n1 || true)
           if [[ -z "$key" ]]; then
-            echo "No VDV key; skip comment."
+            key=$(grep -Eo 'VDV-[0-9]+' <<<"$blob" | head -n1 || true)
+          fi
+          if [[ -z "$key" ]]; then
+            echo "No RND or VDV key; skip comment."
             exit 0
           fi
           export KEY="$key"

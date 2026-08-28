@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Add Promote to Engineering (VDSD ESM) and In Review (VDV Simple ESM)."""
+"""Add Promote to Engineering (VDSD ESM) and In Review (legacy VDV Simple ESM)."""
 
 from __future__ import annotations
 
@@ -35,7 +35,7 @@ def extra_statuses() -> list[dict]:
             "name": "Promote to Engineering",
             "statusCategory": "IN_PROGRESS",
             "scope": {"type": "GLOBAL"},
-            "description": "Customer request promoted to VDV engineering work",
+            "description": "Customer request promoted to RND engineering work",
         },
         {
             "id": IN_REVIEW,
@@ -77,7 +77,7 @@ def patch_default_esm(wf: dict) -> None:
                 "id": "151",
                 "type": "DIRECTED",
                 "name": "Promote to Engineering",
-                "description": "Create linked VDV engineering work",
+                "description": "Create linked RND engineering work",
                 "toStatusReference": PROMOTE,
                 "links": [{"fromStatusReference": "3", "fromPort": 7, "toPort": 1}],
                 "actions": [],

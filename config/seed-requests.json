@@ -141,7 +141,7 @@
     }
   },
   {
-    "source": "vdv",
+    "source": "rnd",
     "promote": false,
     "payload": {
       "requester_name": "Ted Crisp",
@@ -151,8 +151,8 @@
       "clinical_program": "NA",
       "impact_bucket": "Operations",
       "priority": "P3",
-      "summary": "Add VDV-key check to CI for DummyCompany",
-      "description": "Internal: require VDV-\\d+ on PR title/branch before merge."
+      "summary": "Add RND-key check to CI for DummyCompany",
+      "description": "Internal: require RND-\\d+ (legacy VDV-\\d+ still accepted) on PR title/branch before merge."
     }
   }
 ]

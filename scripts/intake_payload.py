@@ -112,12 +112,29 @@ def markdown_to_adf(text: str) -> dict:
     return {"type": "doc", "version": 1, "content": content}
 
 
-def jira_fields(payload: dict, source: str) -> dict:
-    project = "VDSD" if source == "vdsd" else "VDV"
-    issue_type = "Submit a request or incident" if source == "vdsd" else "Task"
+def project_key(source: str) -> str:
+    if source == "vdsd":
+        return TAX["projects"]["customer"]["key"]
+    if source == "vdv":
+        return "VDV"
+    return TAX["projects"]["internal"]["key"]
+
+
+def engineering_issue_type(request_type: str | None) -> str:
     for item in TAX["request_types"]:
-        if item["id"] == payload.get("request_type") and source == "vdv":
-            issue_type = item.get("vdv_issue_type") or "Task"
+        if item["id"] == request_type:
+            return item.get("engineering_issue_type") or "Task"
+    return "Task"
+
+
+def jira_fields(payload: dict, source: str) -> dict:
+    project = project_key(source)
+    if source == "vdsd":
+        issue_type = "Submit a request or incident"
+    elif source == "vdv":
+        issue_type = "Task"
+    else:
+        issue_type = engineering_issue_type(payload.get("request_type"))
     priority = TAX["priority_map"].get(payload.get("priority"), payload.get("priority") or "Medium")
     fields = {
         "project": {"key": project},

@@ -1,6 +1,6 @@
 {
-  "name": "VDSD promote to RND (legacy filename)",
-  "description": "Deprecated filename. Same rule as automation/promote-to-rnd.json. Prefer that file.",
+  "name": "VDSD promote to RND",
+  "description": "When a VDSD issue is transitioned to Promote to Engineering, create an RND Feature or Task, copy labels/description, link implements, comment on VDSD.",
   "state": "ENABLED",
   "trigger": {
     "type": "jira.issue.event.trigger:transitioned",
@@ -27,5 +27,5 @@
       "body": "Promoted to engineering {{createdIssue.key}}."
     }
   ],
-  "import": "Use automation/promote-to-rnd.json instead."
+  "import": "Project settings → Automation → Create rule. Recreate these steps in the UI if JSON import is rejected. Prefer scripts/promote_request.py so Feature vs Task and custom fields are copied."
 }

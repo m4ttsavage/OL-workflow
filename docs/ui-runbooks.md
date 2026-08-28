@@ -5,10 +5,19 @@ Site: https://veridian-dynamics.atlassian.net
 ## Done via REST (`jira_admin_token`)
 
 - Global custom fields + options: `python scripts/configure_jira.py`
-- Screens (SUP 10010/10011/10012, shared by VDSD and VDV): `python scripts/associate_screens.py`
+- VDSD screens (SUP 10010/10011/10012): `python scripts/associate_screens.py`
+- RND field association (team-managed, no classic screens): `python scripts/associate_rnd_fields.py`
 - Workflows: `python scripts/update_workflows.py`
   - **Promote to Engineering** on SUP Default ESM (Submit a request)
   - **In Review** on SUP JSM default (Task) and Simple ESM (Ask a question)
+
+## RND Fields page
+
+https://veridian-dynamics.atlassian.net/jira/software/projects/RND/settings/fields
+
+`associate_rnd_fields.py` lets REST **set** the 13 intake fields on Feature and Task. The Fields / work-type layout table can still look empty until an admin pins those fields on the Feature and Task layouts in the UI. Values already stored on an issue remain after that pin.
+
+Do **not** add native JSM fields (Organizations `customfield_10002`, Request Type `customfield_10010`, request participants) to RND.
 
 ## Still UI-only (REST 401 / no write API)
 
@@ -35,7 +44,7 @@ Create calendar **Veridian Business Hours** (America/Chicago 09:00–17:00 Mon�
 
 Project settings → Automation → Create / Import (JSON import may be rejected; recreate steps):
 
-1. `automation/promote-to-vdv.json` — trigger: transitioned to **Promote to Engineering**
+1. `automation/promote-to-rnd.json` — trigger: transitioned to **Promote to Engineering**
 2. `automation/status-sync.json`
 3. `automation/slack-notify.json` (channel `#dev-updates`)
 
@@ -58,7 +67,7 @@ Ready-to-submit payloads for the next batch: [`config/seed-requests-batch-2.json
 
 ## GitHub for Jira
 
-Already installed. Connect repository `m4ttsavage/DummyCompany` (or this repo until that exists) to project **VDV**.
+Already installed. Connect repository `m4ttsavage/DummyCompany` (or this repo until that exists) to project **RND**.
 
 ## Slack for Jira
 

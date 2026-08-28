@@ -10,18 +10,19 @@
       "type": "service_desk"
     },
     "internal": {
-      "key": "VDV",
-      "name": "Veridian Dynamics v2",
-      "id": "10005",
-      "type": "service_desk"
+      "key": "RND",
+      "name": "R&D",
+      "id": "10001",
+      "type": "software",
+      "style": "next-gen"
     }
   },
-  "unused_projects": ["KAN", "VD", "SAM1"],
+  "unused_projects": ["KAN", "VD", "SAM1", "VDV"],
   "github": {
     "engineering_repo": "m4ttsavage/DummyCompany",
     "control_plane_repo": "m4ttsavage/OL-workflow",
-    "branch_pattern": "VDV-{key}-{slug}",
-    "key_regex": "VDV-\\d+"
+    "branch_pattern": "RND-{key}-{slug}",
+    "key_regex": "RND-\\d+|VDV-\\d+"
   },
   "slack": {
     "channel": "#dev-updates",
@@ -34,17 +35,17 @@
     "P4": "Low"
   },
   "request_types": [
-    { "id": "Feature", "label": "Feature", "vdv_issue_type": "Task" },
-    { "id": "Bug", "label": "Bug", "vdv_issue_type": "Task" },
-    { "id": "Incident", "label": "Incident", "vdv_issue_type": "Submit a request or incident" },
-    { "id": "Operational_Change", "label": "Operational change", "vdv_issue_type": "Task" },
-    { "id": "Access", "label": "Access", "vdv_issue_type": "Task", "program_required": false },
-    { "id": "Question", "label": "Question", "vdv_issue_type": "Ask a question" },
-    { "id": "Compliance", "label": "Compliance", "vdv_issue_type": "Task" },
-    { "id": "New_Program_Launch", "label": "New program launch", "vdv_issue_type": "Task" },
-    { "id": "Pharmacy_Fulfillment", "label": "Pharmacy / fulfillment", "vdv_issue_type": "Task" },
-    { "id": "Clinical_Ops", "label": "Clinical operations", "vdv_issue_type": "Task" },
-    { "id": "Internal_IT", "label": "Internal IT", "vdv_issue_type": "Task", "program_required": false }
+    { "id": "Feature", "label": "Feature", "engineering_issue_type": "Feature" },
+    { "id": "Bug", "label": "Bug", "engineering_issue_type": "Task" },
+    { "id": "Incident", "label": "Incident", "engineering_issue_type": "Task" },
+    { "id": "Operational_Change", "label": "Operational change", "engineering_issue_type": "Task" },
+    { "id": "Access", "label": "Access", "engineering_issue_type": "Task", "program_required": false },
+    { "id": "Question", "label": "Question", "engineering_issue_type": "Task" },
+    { "id": "Compliance", "label": "Compliance", "engineering_issue_type": "Task" },
+    { "id": "New_Program_Launch", "label": "New program launch", "engineering_issue_type": "Feature" },
+    { "id": "Pharmacy_Fulfillment", "label": "Pharmacy / fulfillment", "engineering_issue_type": "Task" },
+    { "id": "Clinical_Ops", "label": "Clinical operations", "engineering_issue_type": "Task" },
+    { "id": "Internal_IT", "label": "Internal IT", "engineering_issue_type": "Task", "program_required": false }
   ],
   "clinical_programs": [
     {

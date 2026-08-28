@@ -1,6 +1,6 @@
 # DummyCompany changelog
 
-Engineering work is keyed to **VDV-n**. Customer origin (when promoted) is **VDSD-n**.
+Engineering work is keyed to **RND-n**. Customer origin (when promoted) is **VDSD-n**. Legacy demo issues used **VDV-n**.
 
 ## v0.1.0 — intake demo
 
