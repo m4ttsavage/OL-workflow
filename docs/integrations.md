@@ -28,10 +28,9 @@ Target repo: `m4ttsavage/DummyCompany` — **does not exist**, and GitHub MCP (`
 
 - Channel `#dev-updates` (`C0BT787UKGS`)
 - Slack-for-Jira already installed (unfurls)
-- Parent message per issue key; later events reply in-thread
-- Watcher DMs by matching Jira watcher/reporter email to Slack users
-- Templates: `docs/api-payloads/slack-parent.json`, `scripts/notify_slack.py`
-- Slack MCP was unavailable at implement time; retry `slack_send_message` when the server is healthy
+- Posted 2026-08-28: parents for VDSD-1, VDSD-2, VDSD-7, VDV-2, VDV-4; promotion/GitHub replies in-thread. Record: [`config/slack-posted.json`](../config/slack-posted.json)
+- Watcher DM: Ted Crisp (`U0BTAN0LM3N` / `matthewmsavage@gmail.com`) — the only Slack user who also exists in Jira
+- Four more Slack users are in `#dev-updates` (Lem, Veronica, Phil, Linda) but have **no Jira accounts yet**, so they cannot be added as issue watchers. Invite them to the Atlassian site to enable email-match DMs.
 
 ## Lovable intake
 

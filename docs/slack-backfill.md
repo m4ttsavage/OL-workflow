@@ -1,8 +1,8 @@
 # Slack backfill copy for #dev-updates
 
-Slack MCP was unavailable at implement time (`namespaceStatus: error`). Slack-for-Jira is already installed and will unfurl the browse URLs.
+Posted 2026-08-28 via Slack MCP. Live links: [`config/slack-posted.json`](../config/slack-posted.json).
 
-Post in `#dev-updates` (`C0BT787UKGS`). One **parent** per issue key. Later events are **thread replies**. DM watchers by matching work email; the only live Slack user mapped today is Ted Crisp (`U0BTAN0LM3N` / `matthewmsavage@gmail.com`).
+Watcher DMs went to Ted Crisp (`U0BTAN0LM3N`). Lem / Veronica / Phil / Linda are in Slack but not in Jira yet.
 
 Machine-readable copy: [`config/slack-backfill.json`](../config/slack-backfill.json). Sender: `python scripts/notify_slack.py` when `SLACK_BOT_TOKEN` is set.
 

@@ -4,7 +4,7 @@ Never commit values. Never put tokens in browser JavaScript or Lovable client co
 
 | Name | Where | Used for |
 | --- | --- | --- |
-| `jira_admin_veridian` | Cursor / cloud-agent secret | Jira REST admin (fields, SLAs, automation). Current token returns HTTP 401 against site REST; recreate a **classic** API token at https://id.atlassian.com/manage-profile/security/api-tokens and store it under the same name. |
+| `jira_admin_veridian` | Cursor / cloud-agent secret | Jira REST admin (fields, SLAs, automation). This agent still sees an **ATCTT scoped** token and gets HTTP 401 on site REST. Store a **classic** API token (created at https://id.atlassian.com/manage-profile/security/api-tokens, typically starts with `ATATT`) under the same name, then re-run `python scripts/configure_jira.py`. |
 | `ATLASSIAN_EMAIL` | env | `matthewmsavage@gmail.com` |
 | `ATLASSIAN_BASE_URL` | env | `https://veridian-dynamics.atlassian.net` |
 | `ATLASSIAN_CLOUD_ID` | env | `2cddf272-587f-44fe-92ed-d157674c74f1` |
@@ -19,5 +19,5 @@ Never commit values. Never put tokens in browser JavaScript or Lovable client co
 
 - Atlassian MCP: issue CRUD, links, transitions (`read:jira-work`, `write:jira-work`). Cannot create fields, SLAs, or workflows.
 - GitHub MCP: authenticated as `m4ttsavage`. Cannot create new repos with this token (403). `m4ttsavage/DummyCompany` was not found; engineering templates and demo PRs live in this control-plane repo (`m4ttsavage/OL-workflow`).
-- Slack MCP: connection error at implement time; Slack-for-Jira is already installed. Paste-ready backfill is in `docs/slack-backfill.md`. Retry MCP for DMs to Ted Crisp (`U0BTAN0LM3N`).
+- Slack MCP: ready. Posted parents/threads in `#dev-updates` and DMs to Ted Crisp. See [`docs/slack-backfill.md`](slack-backfill.md) and `config/slack-posted.json`.
 - Lovable MCP: workspace “The Shadow Realm” (`748VhuycC5GCD4Pkhhb2`).
