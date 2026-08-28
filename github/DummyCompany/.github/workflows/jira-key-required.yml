@@ -1,0 +1,24 @@
+name: Require VDV Jira key
+
+on:
+  pull_request:
+    types: [opened, edited, synchronize, reopened]
+
+jobs:
+  jira-key:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Fail if VDV-123 is missing
+        env:
+          TITLE: ${{ github.event.pull_request.title }}
+          BODY: ${{ github.event.pull_request.body }}
+          BRANCH: ${{ github.head_ref }}
+        run: |
+          set -euo pipefail
+          blob="$TITLE $BODY $BRANCH"
+          if ! grep -Eq 'VDV-[0-9]+' <<<"$blob"; then
+            echo "PRs must reference a VDV issue key in the title, body, or branch (e.g. VDV-12)."
+            echo "Optional customer key: VDSD-45"
+            exit 1
+          fi
+          echo "Found VDV key in PR metadata."

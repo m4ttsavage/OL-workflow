@@ -1,0 +1,31 @@
+{
+  "name": "VDSD promote to VDV",
+  "description": "When a VDSD issue is transitioned to Promote to Engineering, create a VDV Task, copy labels/description, link implements, comment on VDSD.",
+  "state": "ENABLED",
+  "trigger": {
+    "type": "jira.issue.event.trigger:transitioned",
+    "value": { "to_status": ["Promote to Engineering"] }
+  },
+  "conditions": [{ "type": "jira.issues.scoped", "project": "VDSD" }],
+  "actions": [
+    {
+      "type": "jira.issue.create",
+      "project": "VDV",
+      "issuetype": "Task",
+      "summary": "[{{issue.key}}] {{issue.summary}}",
+      "copy": ["description", "priority", "labels"]
+    },
+    {
+      "type": "jira.issue.link",
+      "linkType": "Polaris work item link",
+      "inward": "{{issue.key}}",
+      "outward": "{{createdIssue.key}}"
+    },
+    {
+      "type": "jira.issue.comment",
+      "issue": "{{issue.key}}",
+      "body": "Promoted to engineering {{createdIssue.key}}."
+    }
+  ],
+  "import": "Project settings → Automation → Create rule. Recreate these steps in the UI if JSON import is rejected."
+}

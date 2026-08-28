@@ -1,0 +1,17 @@
+{
+  "name": "Veridian request intake",
+  "install": "python3 -m compileall -q scripts tests",
+  "terminals": [
+    {
+      "name": "intake-form",
+      "command": "python3 -m http.server 8000 --bind 0.0.0.0",
+      "description": "Serves the static intake form. Open http://localhost:8000/apps/intake/index.html (routes: #customer, #internal)."
+    }
+  ],
+  "ports": [
+    {
+      "name": "intake form",
+      "port": 8000
+    }
+  ]
+}

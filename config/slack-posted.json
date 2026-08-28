@@ -1,0 +1,54 @@
+{
+  "channel_id": "C0BT787UKGS",
+  "channel": "#dev-updates",
+  "posted_at": "2026-08-28T05:04:00Z",
+  "parents": {
+    "VDSD-1": {
+      "ts": "1787893428.521679",
+      "url": "https://veridian-dynamics-ltd.slack.com/archives/C0BT787UKGS/p1787893428521679"
+    },
+    "VDSD-2": {
+      "ts": "1787893437.563729",
+      "url": "https://veridian-dynamics-ltd.slack.com/archives/C0BT787UKGS/p1787893437563729"
+    },
+    "VDSD-7": {
+      "ts": "1787893437.768099",
+      "url": "https://veridian-dynamics-ltd.slack.com/archives/C0BT787UKGS/p1787893437768099"
+    },
+    "VDV-2": {
+      "ts": "1787893437.904199",
+      "url": "https://veridian-dynamics-ltd.slack.com/archives/C0BT787UKGS/p1787893437904199"
+    },
+    "VDV-4": {
+      "ts": "1787893462.176909",
+      "url": "https://veridian-dynamics-ltd.slack.com/archives/C0BT787UKGS/p1787893462176909"
+    }
+  },
+  "threads": {
+    "VDV-1": {
+      "thread_of": "VDSD-1",
+      "url": "https://veridian-dynamics-ltd.slack.com/archives/C0BT787UKGS/p1787893437326059?thread_ts=1787893428.521679"
+    },
+    "VDV-3": {
+      "thread_of": "VDSD-2",
+      "url": "https://veridian-dynamics-ltd.slack.com/archives/C0BT787UKGS/p1787893444810509?thread_ts=1787893437.563729"
+    }
+  },
+  "watcher_dms": {
+    "Ted Crisp": {
+      "email": "matthewmsavage@gmail.com",
+      "user_id": "U0BTAN0LM3N",
+      "dm_channel": "D0BT0QG1H3M",
+      "urls": [
+        "https://veridian-dynamics-ltd.slack.com/archives/D0BT0QG1H3M/p1787893461247289",
+        "https://veridian-dynamics-ltd.slack.com/archives/D0BT0QG1H3M/p1787893461488389"
+      ]
+    }
+  },
+  "slack_users_not_in_jira": [
+    { "name": "Lem Hewitt", "email": "matthewmsavage+DYNlem@gmail.com", "user_id": "U0BT4L8T5PD" },
+    { "name": "Veronica", "email": "matthewmsavage+DYNveronica@gmail.com", "user_id": "U0BT4LBKMU3" },
+    { "name": "Phil", "email": "matthewmsavage+DYNphil@gmail.com", "user_id": "U0BT8V9E3B8" },
+    { "name": "Linda", "email": "matthewmsavage+DYNlinda@gmail.com", "user_id": "U0BU5926QMN" }
+  ]
+}

@@ -1,0 +1,158 @@
+[
+  {
+    "source": "vdsd",
+    "promote": true,
+    "payload": {
+      "requester_name": "Ava Chen",
+      "requester_email": "ava.chen@northstar.example",
+      "organization": "Northstar Wellness",
+      "request_type": "Feature",
+      "clinical_program": "Medical_Weight_Loss",
+      "subprogram": "Care_Coaching",
+      "impact_bucket": "Revenue",
+      "business_value_usd": 240000,
+      "value_type": "Retention",
+      "priority": "P2",
+      "summary": "Coaching prompts when GLP-1 members stall after month 3",
+      "description": "Brand ops reports members dropping coaching after month 3. Want in-app prompts and coach capacity view. No patient identifiers.",
+      "no_phi_ack": true
+    }
+  },
+  {
+    "source": "vdsd",
+    "promote": true,
+    "payload": {
+      "requester_name": "Marcus Hale",
+      "requester_email": "marcus.hale@harborpeak.example",
+      "organization": "Harbor Peak Health",
+      "request_type": "Bug",
+      "clinical_program": "Hormones",
+      "subprogram": "At_Home_Kits",
+      "impact_bucket": "Operations",
+      "priority": "P1",
+      "summary": "At-home kit order status stuck on 'label created'",
+      "description": "Fulfillment dashboard shows label created but no carrier scan for kit orders placed after 18:00 CT. Blocks kit shipment visibility for the brand. No patient data.",
+      "no_phi_ack": true
+    }
+  },
+  {
+    "source": "vdsd",
+    "promote": true,
+    "payload": {
+      "requester_name": "Priya Nair",
+      "requester_email": "priya.nair@lumenclinic.example",
+      "organization": "Lumen Clinic",
+      "request_type": "New_Program_Launch",
+      "clinical_program": "Dermatology",
+      "subprogram": "Hair_Loss",
+      "impact_bucket": "Revenue",
+      "business_value_usd": 180000,
+      "value_type": "Revenue",
+      "priority": "P3",
+      "summary": "Launch hair-loss program under Lumen brand",
+      "description": "Ready to add hair-loss as a second program. Need storefront module, intake, and pharmacy routing checklist.",
+      "no_phi_ack": true
+    }
+  },
+  {
+    "source": "vdsd",
+    "promote": true,
+    "payload": {
+      "requester_name": "Jon Park",
+      "requester_email": "jon.park@atlasfitness.example",
+      "organization": "Atlas Fitness Care",
+      "request_type": "Pharmacy_Fulfillment",
+      "clinical_program": "Peptides",
+      "subprogram": "NAD",
+      "impact_bucket": "Cost",
+      "business_value_usd": 42000,
+      "value_type": "Cost_savings",
+      "priority": "P3",
+      "summary": "NAD+ refill cadence too aggressive for 90-day plans",
+      "description": "90-day plans still trigger 30-day refill jobs. Want plan-length aware refill scheduling.",
+      "no_phi_ack": true
+    }
+  },
+  {
+    "source": "vdsd",
+    "promote": false,
+    "payload": {
+      "requester_name": "Sofia Alvarez",
+      "requester_email": "sofia.alvarez@northstar.example",
+      "organization": "Northstar Wellness",
+      "request_type": "Question",
+      "clinical_program": "Sleep_Testing",
+      "subprogram": "Home_Ring_Test",
+      "impact_bucket": "Operations",
+      "priority": "P4",
+      "summary": "How do we reorder home sleep rings after a failed test?",
+      "description": "Need the standard ops path for a failed ring test without opening a clinical ticket.",
+      "no_phi_ack": true
+    }
+  },
+  {
+    "source": "vdsd",
+    "promote": false,
+    "payload": {
+      "requester_name": "Chris Ng",
+      "requester_email": "chris.ng@harborpeak.example",
+      "organization": "Harbor Peak Health",
+      "request_type": "Access",
+      "clinical_program": "NA",
+      "impact_bucket": "Operations",
+      "priority": "P2",
+      "summary": "Add two brand admins to Harbor Peak portal",
+      "description": "Work emails will be sent separately to CS. No patient records in this request.",
+      "no_phi_ack": true
+    }
+  },
+  {
+    "source": "vdsd",
+    "promote": false,
+    "payload": {
+      "requester_name": "Elena Rossi",
+      "requester_email": "elena.rossi@lumenclinic.example",
+      "organization": "Lumen Clinic",
+      "request_type": "Incident",
+      "clinical_program": "Platform",
+      "subprogram": "Storefront",
+      "impact_bucket": "Brand",
+      "priority": "P1",
+      "summary": "Storefront checkout returns 502 during peak",
+      "description": "Intermittent 502 on checkout between 19:00-21:00 ET. Brand cannot complete new enrollments. No patient payload attached.",
+      "no_phi_ack": true
+    }
+  },
+  {
+    "source": "vdsd",
+    "promote": false,
+    "payload": {
+      "requester_name": "Devon Brooks",
+      "requester_email": "devon.brooks@atlasfitness.example",
+      "organization": "Atlas Fitness Care",
+      "request_type": "Compliance",
+      "clinical_program": "Microdosing",
+      "subprogram": "GLP1_Microdose",
+      "impact_bucket": "Compliance",
+      "priority": "P3",
+      "summary": "Need program copy review for GLP-1 microdosing landing page",
+      "description": "Marketing wants a compliance pass on public landing copy before go-live. No member data.",
+      "no_phi_ack": true
+    }
+  },
+  {
+    "source": "vdv",
+    "promote": false,
+    "payload": {
+      "requester_name": "Ted Crisp",
+      "requester_email": "matthewmsavage@gmail.com",
+      "organization": "Engineering",
+      "request_type": "Internal_IT",
+      "clinical_program": "NA",
+      "impact_bucket": "Operations",
+      "priority": "P3",
+      "summary": "Add VDV-key check to CI for DummyCompany",
+      "description": "Internal: require VDV-\\d+ on PR title/branch before merge."
+    }
+  }
+]
