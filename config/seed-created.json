@@ -82,6 +82,21 @@
         "vdv": "VDV-4",
         "vdsd": "VDSD-3",
         "pr": "https://github.com/m4ttsavage/OL-workflow/pull/3"
+      },
+      {
+        "rnd": "RND-7",
+        "vdsd": "VDSD-11",
+        "pr": "https://github.com/m4ttsavage/OL-workflow/pull/12"
+      },
+      {
+        "rnd": "RND-8",
+        "vdsd": "VDSD-13",
+        "pr": "https://github.com/m4ttsavage/OL-workflow/pull/14"
+      },
+      {
+        "rnd": "RND-9",
+        "vdsd": "VDSD-15",
+        "pr": "https://github.com/m4ttsavage/OL-workflow/pull/13"
       }
     ]
   },
