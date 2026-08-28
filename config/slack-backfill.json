@@ -1,0 +1,33 @@
+{
+  "channel_id": "C0BT787UKGS",
+  "channel": "#dev-updates",
+  "note": "Slack MCP was unavailable at implement time. Post these with scripts/notify_slack.py or Slack MCP slack_send_message. Slack-for-Jira should unfurl the URLs.",
+  "messages": [
+    {
+      "key": "VDSD-1",
+      "text": "*VDSD-1* · Feature · P2 · Northstar Wellness\nCoaching prompts when GLP-1 members stall after month 3\nhttps://veridian-dynamics.atlassian.net/browse/VDSD-1"
+    },
+    {
+      "key": "VDV-1",
+      "thread_of": "VDSD-1",
+      "text": "Promoted to engineering *VDV-1* (implements VDSD-1)\nhttps://veridian-dynamics.atlassian.net/browse/VDV-1"
+    },
+    {
+      "key": "VDSD-2",
+      "text": "*VDSD-2* · Bug · P1 · Harbor Peak Health\nAt-home kit order status stuck on label created\nhttps://veridian-dynamics.atlassian.net/browse/VDSD-2"
+    },
+    {
+      "key": "VDV-3",
+      "thread_of": "VDSD-2",
+      "text": "Promoted to engineering *VDV-3* (implements VDSD-2)\nhttps://veridian-dynamics.atlassian.net/browse/VDV-3"
+    },
+    {
+      "key": "VDSD-7",
+      "text": "*VDSD-7* · Incident · P1 · Lumen Clinic\nStorefront checkout returns 502 during peak\nhttps://veridian-dynamics.atlassian.net/browse/VDSD-7"
+    },
+    {
+      "key": "VDV-2",
+      "text": "*VDV-2* · Internal_IT · P3 · Engineering\nAdd VDV-key check to CI for DummyCompany\nhttps://veridian-dynamics.atlassian.net/browse/VDV-2"
+    }
+  ]
+}

@@ -1,0 +1,166 @@
+{
+  "Requester Name": {
+    "id": "customfield_10078",
+    "contextId": "10184"
+  },
+  "Requester Email": {
+    "id": "customfield_10079",
+    "contextId": "10185"
+  },
+  "Organization": {
+    "id": "customfield_10080",
+    "contextId": "10186",
+    "options": {
+      "Northstar Wellness": "10049",
+      "Harbor Peak Health": "10050",
+      "Lumen Clinic": "10051",
+      "Atlas Fitness Care": "10052",
+      "Other": "10053",
+      "IT": "10054",
+      "Clinical Ops": "10055",
+      "CS": "10056",
+      "RCM": "10057",
+      "People": "10058",
+      "Finance": "10059",
+      "Engineering": "10060",
+      "Veridian Dynamics Internal": "10061"
+    }
+  },
+  "Organization Other": {
+    "id": "customfield_10081",
+    "contextId": "10187"
+  },
+  "Intake Request Type": {
+    "id": "customfield_10082",
+    "contextId": "10188",
+    "options": {
+      "Feature": "10062",
+      "Bug": "10063",
+      "Incident": "10064",
+      "Operational_Change": "10065",
+      "Access": "10066",
+      "Question": "10067",
+      "Compliance": "10068",
+      "New_Program_Launch": "10069",
+      "Pharmacy_Fulfillment": "10070",
+      "Clinical_Ops": "10071",
+      "Internal_IT": "10072"
+    }
+  },
+  "Clinical Program": {
+    "id": "customfield_10083",
+    "contextId": "10189",
+    "options": {
+      "Peptides": "10073",
+      "Medical_Weight_Loss": "10074",
+      "Hormones": "10075",
+      "Sexual_Health": "10076",
+      "Diagnostics": "10077",
+      "Sleep_Testing": "10078",
+      "Dietitians": "10079",
+      "Dermatology": "10080",
+      "Microdosing": "10081",
+      "Supplements": "10082",
+      "Mental_Health": "10083",
+      "Behavioral_Health": "10084",
+      "Urgent_Care": "10085",
+      "Platform": "10086",
+      "Cross_Program": "10087",
+      "NA": "10088"
+    }
+  },
+  "Subprogram": {
+    "id": "customfield_10084",
+    "contextId": "10190",
+    "options": {
+      "NAD": "10089",
+      "Sermorelin": "10090",
+      "B12_MIC": "10091",
+      "Category1_Peptide": "10092",
+      "GLP1_Program": "10093",
+      "Care_Coaching": "10094",
+      "Aftercare_Maintenance": "10095",
+      "Nutrition_RD": "10096",
+      "HRT_Launch": "10097",
+      "Lab_Testing": "10098",
+      "At_Home_Kits": "10099",
+      "Ongoing_Monitoring": "10100",
+      "ED": "10101",
+      "Combo_3in1": "10102",
+      "Combo_4in1": "10103",
+      "At_Home_Collection": "10104",
+      "Whole_Health_Panel": "10105",
+      "Home_Ring_Test": "10106",
+      "Oral_Device": "10107",
+      "Rx_Treatment": "10108",
+      "RD_Visits": "10109",
+      "GLP1_Aftercare": "10110",
+      "Acne": "10111",
+      "Hair_Loss": "10112",
+      "Men": "10113",
+      "Women": "10114",
+      "GLP1_Microdose": "10115",
+      "Metabolic_Support": "10116",
+      "White_Label_Line": "10117",
+      "Daily_Essentials": "10118",
+      "Targeted_Formula": "10119",
+      "New_Protocol": "10120",
+      "Capacity": "10121",
+      "Workflow": "10122",
+      "Other": "10123",
+      "Storefront": "10124",
+      "Intakes": "10125",
+      "Portal": "10126",
+      "Provider_Network": "10127",
+      "RCM_Payer": "10128",
+      "CCM_RPM": "10129"
+    }
+  },
+  "Impact Bucket": {
+    "id": "customfield_10085",
+    "contextId": "10191",
+    "options": {
+      "Patient_Safety_NonPHI": "10130",
+      "Clinical_Quality_NonPHI": "10131",
+      "Revenue": "10132",
+      "Cost": "10133",
+      "Brand": "10134",
+      "Operations": "10135",
+      "Compliance": "10136"
+    }
+  },
+  "Business Value USD": {
+    "id": "customfield_10086",
+    "contextId": "10192"
+  },
+  "Value Type": {
+    "id": "customfield_10087",
+    "contextId": "10193",
+    "options": {
+      "Revenue": "10137",
+      "Cost_savings": "10138",
+      "Cost_avoidance": "10139",
+      "Retention": "10140"
+    }
+  },
+  "Source": {
+    "id": "customfield_10088",
+    "contextId": "10194",
+    "options": {
+      "vdsd": "10141",
+      "vdv": "10142"
+    }
+  },
+  "Counterpart Key": {
+    "id": "customfield_10089",
+    "contextId": "10195"
+  },
+  "No PHI Acknowledgement": {
+    "id": "customfield_10090",
+    "contextId": "10196",
+    "options": {
+      "Yes": "10143",
+      "No": "10144"
+    }
+  }
+}

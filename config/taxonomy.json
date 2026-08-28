@@ -1,0 +1,242 @@
+{
+  "company": "Veridian Dynamics",
+  "site": "https://veridian-dynamics.atlassian.net",
+  "cloud_id": "2cddf272-587f-44fe-92ed-d157674c74f1",
+  "projects": {
+    "customer": {
+      "key": "VDSD",
+      "name": "Veridian Dynamics Support Desk",
+      "id": "10002",
+      "type": "service_desk"
+    },
+    "internal": {
+      "key": "VDV",
+      "name": "Veridian Dynamics v2",
+      "id": "10005",
+      "type": "service_desk"
+    }
+  },
+  "unused_projects": ["KAN", "VD", "SAM1"],
+  "github": {
+    "engineering_repo": "m4ttsavage/DummyCompany",
+    "control_plane_repo": "m4ttsavage/OL-workflow",
+    "branch_pattern": "VDV-{key}-{slug}",
+    "key_regex": "VDV-\\d+"
+  },
+  "slack": {
+    "channel": "#dev-updates",
+    "channel_id": "C0BT787UKGS"
+  },
+  "priority_map": {
+    "P1": "Highest",
+    "P2": "High",
+    "P3": "Medium",
+    "P4": "Low"
+  },
+  "request_types": [
+    { "id": "Feature", "label": "Feature", "vdv_issue_type": "Task" },
+    { "id": "Bug", "label": "Bug", "vdv_issue_type": "Task" },
+    { "id": "Incident", "label": "Incident", "vdv_issue_type": "Submit a request or incident" },
+    { "id": "Operational_Change", "label": "Operational change", "vdv_issue_type": "Task" },
+    { "id": "Access", "label": "Access", "vdv_issue_type": "Task", "program_required": false },
+    { "id": "Question", "label": "Question", "vdv_issue_type": "Ask a question" },
+    { "id": "Compliance", "label": "Compliance", "vdv_issue_type": "Task" },
+    { "id": "New_Program_Launch", "label": "New program launch", "vdv_issue_type": "Task" },
+    { "id": "Pharmacy_Fulfillment", "label": "Pharmacy / fulfillment", "vdv_issue_type": "Task" },
+    { "id": "Clinical_Ops", "label": "Clinical operations", "vdv_issue_type": "Task" },
+    { "id": "Internal_IT", "label": "Internal IT", "vdv_issue_type": "Task", "program_required": false }
+  ],
+  "clinical_programs": [
+    {
+      "id": "Peptides",
+      "label": "Peptides",
+      "subprograms": [
+        { "id": "NAD", "label": "NAD+" },
+        { "id": "Sermorelin", "label": "Sermorelin" },
+        { "id": "B12_MIC", "label": "B-12 MIC" },
+        { "id": "Category1_Peptide", "label": "Category 1 peptide" }
+      ]
+    },
+    {
+      "id": "Medical_Weight_Loss",
+      "label": "Medical weight loss",
+      "subprograms": [
+        { "id": "GLP1_Program", "label": "GLP-1 program" },
+        { "id": "Care_Coaching", "label": "Care coaching" },
+        { "id": "Aftercare_Maintenance", "label": "Aftercare / maintenance" },
+        { "id": "Nutrition_RD", "label": "Nutrition / registered dietitian" }
+      ]
+    },
+    {
+      "id": "Hormones",
+      "label": "Hormones",
+      "subprograms": [
+        { "id": "HRT_Launch", "label": "HRT launch" },
+        { "id": "Lab_Testing", "label": "Lab testing" },
+        { "id": "At_Home_Kits", "label": "At-home test kits" },
+        { "id": "Ongoing_Monitoring", "label": "Ongoing monitoring" }
+      ]
+    },
+    {
+      "id": "Sexual_Health",
+      "label": "Sexual health",
+      "subprograms": [
+        { "id": "ED", "label": "Erectile dysfunction" },
+        { "id": "Combo_3in1", "label": "3-in-1 combination" },
+        { "id": "Combo_4in1", "label": "4-in-1 combination" }
+      ]
+    },
+    {
+      "id": "Diagnostics",
+      "label": "Diagnostics",
+      "subprograms": [
+        { "id": "At_Home_Collection", "label": "At-home collection" },
+        { "id": "Whole_Health_Panel", "label": "Whole health panel" }
+      ]
+    },
+    {
+      "id": "Sleep_Testing",
+      "label": "Sleep testing",
+      "subprograms": [
+        { "id": "Home_Ring_Test", "label": "Home ring test" },
+        { "id": "Oral_Device", "label": "Oral device" },
+        { "id": "Rx_Treatment", "label": "Prescription treatment" }
+      ]
+    },
+    {
+      "id": "Dietitians",
+      "label": "Dietitians",
+      "subprograms": [
+        { "id": "RD_Visits", "label": "Registered dietitian visits" },
+        { "id": "GLP1_Aftercare", "label": "GLP-1 aftercare" }
+      ]
+    },
+    {
+      "id": "Dermatology",
+      "label": "Dermatology",
+      "subprograms": [
+        { "id": "Acne", "label": "Acne" },
+        { "id": "Hair_Loss", "label": "Hair loss" },
+        { "id": "Men", "label": "Men" },
+        { "id": "Women", "label": "Women" }
+      ]
+    },
+    {
+      "id": "Microdosing",
+      "label": "Microdosing",
+      "subprograms": [
+        { "id": "GLP1_Microdose", "label": "GLP-1 microdosing" },
+        { "id": "Metabolic_Support", "label": "Metabolic support" }
+      ]
+    },
+    {
+      "id": "Supplements",
+      "label": "Supplements",
+      "subprograms": [
+        { "id": "White_Label_Line", "label": "White-label line" },
+        { "id": "Daily_Essentials", "label": "Daily essentials" },
+        { "id": "Targeted_Formula", "label": "Targeted formula" }
+      ]
+    },
+    {
+      "id": "Mental_Health",
+      "label": "Mental health",
+      "subprograms": [
+        { "id": "New_Protocol", "label": "New protocol" },
+        { "id": "Capacity", "label": "Capacity" },
+        { "id": "Workflow", "label": "Workflow" },
+        { "id": "Other", "label": "Other" }
+      ]
+    },
+    {
+      "id": "Behavioral_Health",
+      "label": "Behavioral health",
+      "subprograms": [
+        { "id": "New_Protocol", "label": "New protocol" },
+        { "id": "Capacity", "label": "Capacity" },
+        { "id": "Workflow", "label": "Workflow" },
+        { "id": "Other", "label": "Other" }
+      ]
+    },
+    {
+      "id": "Urgent_Care",
+      "label": "Urgent care",
+      "subprograms": [
+        { "id": "New_Protocol", "label": "New protocol" },
+        { "id": "Capacity", "label": "Capacity" },
+        { "id": "Workflow", "label": "Workflow" },
+        { "id": "Other", "label": "Other" }
+      ]
+    },
+    {
+      "id": "Platform",
+      "label": "Platform",
+      "subprogram_required": false,
+      "subprograms": [
+        { "id": "Storefront", "label": "Storefront" },
+        { "id": "Intakes", "label": "Intakes" },
+        { "id": "Portal", "label": "Portal" },
+        { "id": "Provider_Network", "label": "Provider network" },
+        { "id": "RCM_Payer", "label": "RCM / payer" },
+        { "id": "CCM_RPM", "label": "CCM / RPM" }
+      ]
+    },
+    {
+      "id": "Cross_Program",
+      "label": "Cross-program",
+      "subprogram_required": false,
+      "subprograms": []
+    },
+    {
+      "id": "NA",
+      "label": "N/A",
+      "subprogram_required": false,
+      "subprograms": []
+    }
+  ],
+  "impact_buckets": [
+    { "id": "Patient_Safety_NonPHI", "label": "Patient safety (no PHI)", "value_required": false },
+    { "id": "Clinical_Quality_NonPHI", "label": "Clinical quality (no PHI)", "value_required": false },
+    { "id": "Revenue", "label": "Revenue", "value_required": true },
+    { "id": "Cost", "label": "Cost", "value_required": true },
+    { "id": "Brand", "label": "Brand", "value_required": false },
+    { "id": "Operations", "label": "Operations", "value_required": false },
+    { "id": "Compliance", "label": "Compliance", "value_required": false }
+  ],
+  "value_types": [
+    { "id": "Revenue", "label": "Revenue" },
+    { "id": "Cost_savings", "label": "Cost savings" },
+    { "id": "Cost_avoidance", "label": "Cost avoidance" },
+    { "id": "Retention", "label": "Retention" }
+  ],
+  "organizations": {
+    "customer": [
+      "Northstar Wellness",
+      "Harbor Peak Health",
+      "Lumen Clinic",
+      "Atlas Fitness Care",
+      "Other"
+    ],
+    "internal": [
+      "IT",
+      "Clinical Ops",
+      "CS",
+      "RCM",
+      "People",
+      "Finance",
+      "Engineering",
+      "Veridian Dynamics Internal"
+    ]
+  },
+  "slas": {
+    "timezone": "America/Chicago",
+    "business_hours": "Mon-Fri 09:00-17:00",
+    "p1_calendar": "24x7",
+    "goals": [
+      { "priority": "P1", "first_response": "15m", "resolution": "4h" },
+      { "priority": "P2", "first_response": "1h", "resolution": "8h" },
+      { "priority": "P3", "first_response": "4h", "resolution": "3d" },
+      { "priority": "P4", "first_response": "1d", "resolution": "10d" }
+    ]
+  }
+}

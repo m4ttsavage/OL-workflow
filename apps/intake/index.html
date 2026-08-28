@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Veridian Dynamics Request Intake</title>
+  <style>
+    :root { --navy: #0b1f3a; --line: #d7dee8; --bg: #f5f7fa; }
+    body { font-family: "Segoe UI", system-ui, sans-serif; margin: 0; background: var(--bg); color: var(--navy); }
+    header { background: var(--navy); color: #fff; padding: 1.25rem 1.5rem; }
+    header p { margin: 0.35rem 0 0; opacity: 0.8; font-size: 0.95rem; }
+    main { max-width: 880px; margin: 1.5rem auto; padding: 0 1rem 3rem; }
+    .banner { background: #fff4d6; border: 1px solid #e6c86a; padding: 0.75rem 1rem; border-radius: 8px; margin-bottom: 1rem; }
+    .chooser { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    a.card { display: block; background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: 1.25rem; text-decoration: none; color: inherit; }
+    a.card:hover { border-color: var(--navy); }
+    form { background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: 1.25rem; }
+    label { display: block; font-weight: 600; margin: 0.9rem 0 0.3rem; }
+    input, select, textarea { width: 100%; box-sizing: border-box; padding: 0.5rem; border: 1px solid var(--line); border-radius: 6px; font: inherit; }
+    textarea { min-height: 120px; }
+    .hint { font-weight: 400; color: #4a5b73; font-size: 0.85rem; }
+    .row { display: none; }
+    .row.show { display: block; }
+    button { margin-top: 1rem; background: var(--navy); color: #fff; border: 0; padding: 0.7rem 1.1rem; border-radius: 8px; font: inherit; cursor: pointer; }
+    pre { background: #0b1f3a; color: #e8eef7; padding: 1rem; border-radius: 8px; overflow: auto; }
+    .help { background: #eef3fb; padding: 0.75rem 1rem; border-radius: 8px; margin-top: 1rem; font-size: 0.9rem; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Veridian Dynamics Request Intake</h1>
+    <p>Product and operational requests. No patient or clinical data.</p>
+  </header>
+  <main>
+    <div class="banner">Do not include patient names, dates of birth, medical record numbers, diagnoses, or clinical notes.</div>
+    <div id="chooser" class="chooser">
+      <a class="card" href="#customer"><strong>Customer request</strong><p>White-label brand intake → VDSD</p></a>
+      <a class="card" href="#internal"><strong>Employee request</strong><p>Internal intake → VDV</p></a>
+    </div>
+    <form id="form" hidden>
+      <p><a href="#">← All intakes</a></p>
+      <h2 id="form-title"></h2>
+      <label>Organization
+        <select id="organization" required></select>
+      </label>
+      <div class="row" id="org-other-row"><label>Organization (other)<input id="organization_other" /></label></div>
+      <label>Request type
+        <select id="request_type" required></select>
+      </label>
+      <div class="row" id="program-row">
+        <label>Clinical program <span class="hint">Required except Access and Internal IT</span>
+          <select id="clinical_program"></select>
+        </label>
+      </div>
+      <div class="row" id="sub-row">
+        <label>Subprogram
+          <select id="subprogram"></select>
+        </label>
+      </div>
+      <label>Impact bucket
+        <select id="impact_bucket" required></select>
+      </label>
+      <div class="row" id="value-row">
+        <label>Business value USD <span class="hint">Annualized estimate is fine</span>
+          <input id="business_value_usd" type="number" min="0" step="1" />
+        </label>
+        <label>Value type
+          <select id="value_type">
+            <option value="">Select</option>
+            <option value="Revenue">Revenue</option>
+            <option value="Cost_savings">Cost savings</option>
+            <option value="Cost_avoidance">Cost avoidance</option>
+            <option value="Retention">Retention</option>
+          </select>
+        </label>
+      </div>
+      <label>Priority <span class="hint">P1 = care delivery blocked or brand down. Do not attach PHI to justify priority.</span>
+        <select id="priority" required>
+          <option value="P1">P1 / Highest</option>
+          <option value="P2">P2 / High</option>
+          <option value="P3" selected>P3 / Medium</option>
+          <option value="P4">P4 / Low</option>
+        </select>
+      </label>
+      <label>Requester name <input id="requester_name" required /></label>
+      <label>Work email <input id="requester_email" type="email" required /></label>
+      <div class="row" id="watchers-row"><label>Watchers (emails, comma-separated)<input id="watchers" /></label></div>
+      <label>Summary <input id="summary" required maxlength="255" /></label>
+      <label>Description <textarea id="description" required></textarea></label>
+      <div class="row" id="phi-row">
+        <label><input id="no_phi_ack" type="checkbox" /> This request contains no patient or clinical data</label>
+      </div>
+      <div class="help"><strong>Need help choosing?</strong> Feature = new capability. Bug = something broken. Incident = brand-facing outage. New program launch = add a clinical program under a brand.</div>
+      <button type="submit">Validate and generate payload</button>
+    </form>
+    <div id="result" hidden>
+      <h3>Payload</h3>
+      <p>Submit with <code>python scripts/submit_intake.py payload.json --source vdsd|vdv</code> after a working API token is available, or paste into Lovable once secrets are set.</p>
+      <pre id="payload"></pre>
+    </div>
+  </main>
+  <script type="module">
+    const tax = await fetch("../../config/taxonomy.json").then(r => r.json()).catch(() => null);
+    const requestTypes = ["Feature","Bug","Incident","Operational_Change","Access","Question","Compliance","New_Program_Launch","Pharmacy_Fulfillment","Clinical_Ops","Internal_IT"];
+    const programs = {
+      Peptides: ["NAD","Sermorelin","B12_MIC","Category1_Peptide"],
+      Medical_Weight_Loss: ["GLP1_Program","Care_Coaching","Aftercare_Maintenance","Nutrition_RD"],
+      Hormones: ["HRT_Launch","Lab_Testing","At_Home_Kits","Ongoing_Monitoring"],
+      Sexual_Health: ["ED","Combo_3in1","Combo_4in1"],
+      Diagnostics: ["At_Home_Collection","Whole_Health_Panel"],
+      Sleep_Testing: ["Home_Ring_Test","Oral_Device","Rx_Treatment"],
+      Dietitians: ["RD_Visits","GLP1_Aftercare"],
+      Dermatology: ["Acne","Hair_Loss","Men","Women"],
+      Microdosing: ["GLP1_Microdose","Metabolic_Support"],
+      Supplements: ["White_Label_Line","Daily_Essentials","Targeted_Formula"],
+      Mental_Health: ["New_Protocol","Capacity","Workflow","Other"],
+      Behavioral_Health: ["New_Protocol","Capacity","Workflow","Other"],
+      Urgent_Care: ["New_Protocol","Capacity","Workflow","Other"],
+      Platform: ["Storefront","Intakes","Portal","Provider_Network","RCM_Payer","CCM_RPM"],
+      Cross_Program: [],
+      NA: []
+    };
+    const fill = (sel, opts, placeholder="Select") => {
+      sel.innerHTML = `<option value="">${placeholder}</option>` + opts.map(o => `<option value="${o}">${o.replaceAll("_"," ")}</option>`).join("");
+    };
+    const $ = id => document.getElementById(id);
+    const show = (id, on) => $(id).classList.toggle("show", on);
+    function route() {
+      const hash = location.hash.replace("#","");
+      const customer = hash === "customer";
+      const internal = hash === "internal";
+      $("chooser").hidden = customer || internal;
+      $("form").hidden = !(customer || internal);
+      $("result").hidden = true;
+      if (!(customer || internal)) return;
+      $("form-title").textContent = customer ? "Customer request (VDSD)" : "Employee request (VDV)";
+      fill($("organization"), customer
+        ? ["Northstar Wellness","Harbor Peak Health","Lumen Clinic","Atlas Fitness Care","Other"]
+        : ["IT","Clinical Ops","CS","RCM","People","Finance","Engineering","Veridian Dynamics Internal"]);
+      fill($("request_type"), requestTypes);
+      fill($("clinical_program"), Object.keys(programs));
+      fill($("impact_bucket"), ["Patient_Safety_NonPHI","Clinical_Quality_NonPHI","Revenue","Cost","Brand","Operations","Compliance"]);
+      show("phi-row", customer);
+      show("watchers-row", internal);
+      sync();
+    }
+    function sync() {
+      const type = $("request_type").value;
+      const programNeeded = type && type !== "Access" && type !== "Internal_IT";
+      show("program-row", programNeeded);
+      const program = $("clinical_program").value;
+      const subs = programs[program] || [];
+      const subNeeded = programNeeded && program && program !== "Cross_Program" && program !== "NA";
+      show("sub-row", subNeeded);
+      if (subNeeded) fill($("subprogram"), subs);
+      show("org-other-row", $("organization").value === "Other");
+      const impact = $("impact_bucket").value;
+      show("value-row", impact === "Revenue" || impact === "Cost");
+    }
+    ["request_type","clinical_program","organization","impact_bucket"].forEach(id => $(id).addEventListener("change", sync));
+    $("form").addEventListener("submit", (e) => {
+      e.preventDefault();
+      const source = location.hash === "#internal" ? "vdv" : "vdsd";
+      if (source === "vdsd" && !$("no_phi_ack").checked) {
+        alert("Confirm the request contains no patient or clinical data.");
+        return;
+      }
+      const payload = {
+        requester_name: $("requester_name").value.trim(),
+        requester_email: $("requester_email").value.trim(),
+        organization: $("organization").value === "Other" ? $("organization_other").value.trim() : $("organization").value,
+        request_type: $("request_type").value,
+        clinical_program: $("clinical_program").value || null,
+        subprogram: $("subprogram").value || null,
+        impact_bucket: $("impact_bucket").value,
+        business_value_usd: $("business_value_usd").value ? Number($("business_value_usd").value) : null,
+        value_type: $("value_type").value || null,
+        priority: $("priority").value,
+        summary: $("summary").value.trim(),
+        description: $("description").value.trim(),
+        no_phi_ack: $("no_phi_ack").checked,
+        watchers: $("watchers").value.trim(),
+        source
+      };
+      $("payload").textContent = JSON.stringify(payload, null, 2);
+      $("result").hidden = false;
+    });
+    window.addEventListener("hashchange", route);
+    route();
+  </script>
+</body>
+</html>

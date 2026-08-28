@@ -1,0 +1,17 @@
+{
+  "name": "VDV status comments on VDSD",
+  "description": "When a VDV issue linked as implements a VDSD request moves to In Review or Done, comment on the VDSD issue.",
+  "state": "ENABLED",
+  "trigger": {
+    "type": "jira.issue.event.trigger:transitioned",
+    "value": { "to_status": ["In Review", "Done"] }
+  },
+  "conditions": [{ "type": "jira.issues.scoped", "project": "VDV" }],
+  "actions": [
+    {
+      "type": "jira.issue.comment",
+      "issue": "{{destinationIssue}}",
+      "body": "{{issue.key}} moved to {{issue.status}}. https://veridian-dynamics.atlassian.net/browse/{{issue.key}}"
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "verified": {
+    "customer": "VDSD-1",
+    "internal": "VDV-2"
+  },
+  "vdsd": [
+    "VDSD-1",
+    "VDSD-2",
+    "VDSD-3",
+    "VDSD-4",
+    "VDSD-5",
+    "VDSD-6",
+    "VDSD-7",
+    "VDSD-8"
+  ],
+  "promoted": [
+    { "vdsd": "VDSD-1", "vdv": "VDV-1", "link": "Polaris work item link" },
+    { "vdsd": "VDSD-2", "vdv": "VDV-3", "link": "Polaris work item link" },
+    { "vdsd": "VDSD-3", "vdv": "VDV-4", "link": "Polaris work item link" },
+    { "vdsd": "VDSD-4", "vdv": "VDV-5", "link": "Polaris work item link" }
+  ],
+  "internal_direct": ["VDV-2"],
+  "github": {
+    "control_plane_pr": "https://github.com/m4ttsavage/OL-workflow/pull/1",
+    "demo_prs": [
+      { "vdv": "VDV-1", "vdsd": "VDSD-1", "pr": "https://github.com/m4ttsavage/OL-workflow/pull/4" },
+      { "vdv": "VDV-3", "vdsd": "VDSD-2", "pr": "https://github.com/m4ttsavage/OL-workflow/pull/5" },
+      { "vdv": "VDV-4", "vdsd": "VDSD-3", "pr": "https://github.com/m4ttsavage/OL-workflow/pull/3" }
+    ]
+  },
+  "lovable": {
+    "project_id": "f4958c29-f0e1-4e95-a908-1bb0c7975610",
+    "published": "https://veridian-intake.lovable.app"
+  },
+  "notes": "Custom fields created and backfilled on VDSD-1..8 and VDV-1..5. Promote to Engineering (status 10020) is on Submit a request; In Review (10021) is on Task. Portal request types, SLAs, and Automation import remain UI. Slack parents posted; invite Lem/Veronica/Phil/Linda to Jira for watcher DMs."
+}
