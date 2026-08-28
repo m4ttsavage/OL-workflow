@@ -3,6 +3,7 @@
 
 from __future__ import annotations
 
+import argparse
 import json
 import sys
 from pathlib import Path
@@ -11,11 +12,15 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 import intake_payload  # noqa: E402
 import jira_client as jira  # noqa: E402
 
-SEED = Path(__file__).resolve().parents[1] / "config" / "seed-requests.json"
+DEFAULT_SEED = Path(__file__).resolve().parents[1] / "config" / "seed-requests.json"
 
 
 def main() -> int:
-    items = json.loads(SEED.read_text())
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--file", default=str(DEFAULT_SEED), help="Seed JSON array (default: config/seed-requests.json)")
+    args = parser.parse_args()
+    seed_path = Path(args.file)
+    items = json.loads(seed_path.read_text())
     created = []
     for item in items:
         source = item["source"]

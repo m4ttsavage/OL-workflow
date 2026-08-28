@@ -7,13 +7,17 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
 
 import intake_payload  # noqa: E402
+import jsm_customers  # noqa: E402
 
 SEED = json.loads((ROOT / "config" / "seed-requests.json").read_text())
+BATCH2 = json.loads((ROOT / "config" / "seed-requests-batch-2.json").read_text())
+JSM = json.loads((ROOT / "config" / "jsm-customers.json").read_text())
+TAX = json.loads((ROOT / "config" / "taxonomy.json").read_text())
 
 
 class IntakePayloadTests(unittest.TestCase):
     def test_seed_payloads_validate(self):
-        for item in SEED:
+        for item in SEED + BATCH2:
             errors = intake_payload.validate(item["payload"], item["source"])
             self.assertEqual(errors, [], msg=item["payload"]["summary"])
 
@@ -26,7 +30,7 @@ class IntakePayloadTests(unittest.TestCase):
     def test_access_skips_program(self):
         payload = {
             "requester_name": "Pat",
-            "requester_email": "pat@example.com",
+            "requester_email": "matthewmsavage+harbor-peak-health-ops@gmail.com",
             "organization": "Harbor Peak Health",
             "request_type": "Access",
             "impact_bucket": "Operations",
@@ -61,12 +65,13 @@ class IntakePayloadTests(unittest.TestCase):
         self.assertEqual(fields["description"]["type"], "doc")
         self.assertEqual(fields["priority"]["name"], "High")
         self.assertEqual(fields["customfield_10078"], "Ava Chen")
-        self.assertEqual(fields["customfield_10079"], "ava.chen@northstar.example")
+        self.assertEqual(fields["customfield_10079"], "matthewmsavage+northstar-wellness@gmail.com")
         self.assertEqual(fields["customfield_10080"], {"id": "10049"})
         self.assertEqual(fields["customfield_10082"], {"id": "10062"})
         self.assertEqual(fields["customfield_10088"], {"id": "10141"})
         self.assertEqual(fields["customfield_10090"], {"id": "10143"})
         self.assertEqual(fields["customfield_10086"], 240000.0)
+        self.assertEqual(fields["customfield_10002"], [{"id": "1"}])
 
     def test_resolve_source(self):
         import submit_intake
@@ -74,6 +79,48 @@ class IntakePayloadTests(unittest.TestCase):
         self.assertEqual(submit_intake.resolve_source({"source": "vdsd"}, None), "vdsd")
         self.assertEqual(submit_intake.resolve_source({}, "vdv"), "vdv")
         self.assertIsNone(submit_intake.resolve_source({}, None))
+
+
+class JsmCustomerTests(unittest.TestCase):
+    def test_plus_email(self):
+        self.assertEqual(
+            jsm_customers.plus_email("northstar-wellness"),
+            "matthewmsavage+northstar-wellness@gmail.com",
+        )
+        self.assertEqual(
+            jsm_customers.plus_email("+Cedar-Ridge-Telehealth-ops"),
+            "matthewmsavage+cedar-ridge-telehealth-ops@gmail.com",
+        )
+
+    def test_plus_email_rejects_bad_tag(self):
+        with self.assertRaises(ValueError):
+            jsm_customers.plus_email("not an email")
+
+    def test_config_validates(self):
+        self.assertEqual(jsm_customers.validate_config(JSM), [])
+
+    def test_org_slugs_match_taxonomy(self):
+        tax_customer = [name for name in TAX["organizations"]["customer"] if name != "Other"]
+        config_names = [org["name"] for org in JSM["organizations"]]
+        self.assertEqual(sorted(tax_customer), sorted(config_names))
+        for org in JSM["organizations"]:
+            self.assertEqual(org["slug"], jsm_customers.org_slug(org["name"]))
+
+    def test_seed_emails_are_plus_aliases(self):
+        by_name = {
+            (org["name"], customer["display_name"]): jsm_customers.customer_email(customer, org)
+            for org in JSM["organizations"]
+            for customer in org["customers"]
+        }
+        for item in SEED + BATCH2:
+            payload = item["payload"]
+            if item["source"] != "vdsd":
+                continue
+            email = by_name[(payload["organization"], payload["requester_name"])]
+            self.assertEqual(payload["requester_email"], email)
+            self.assertTrue(payload["requester_email"].startswith("matthewmsavage+"))
+            self.assertTrue(payload["requester_email"].endswith("@gmail.com"))
+            self.assertIn(jsm_customers.org_slug(payload["organization"]), payload["requester_email"])
 
 
 if __name__ == "__main__":

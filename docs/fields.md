@@ -2,7 +2,7 @@
 
 Created **once as global fields**, then added to the shared SUP JSM screens used by both classic projects. **No prefixes.** Option maps live in [`config/field-ids.json`](../config/field-ids.json).
 
-Native JSM already has a field named **Request Type** (`customfield_10010`) for portal request types. Our taxonomy field is a separate select named **Intake Request Type** in Jira (display still “Request Type” on the public forms). Native **Organizations** (`customfield_10002`) is the JSM customer-org picker; our **Organization** field is a brand/department select.
+Native JSM already has a field named **Request Type** (`customfield_10010`) for portal request types. Our taxonomy field is a separate select named **Intake Request Type** in Jira (display still “Request Type” on the public forms). Native **Organizations** (`customfield_10002`) is the JSM customer-org picker; our **Organization** field is a brand/department select. `scripts/intake_payload.py` sets `customfield_10002` from [`config/jsm-customers-created.json`](../config/jsm-customers-created.json) when that file exists.
 
 ## Field definitions
 

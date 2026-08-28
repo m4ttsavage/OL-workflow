@@ -1,0 +1,110 @@
+{
+  "email_local": "matthewmsavage",
+  "email_domain": "gmail.com",
+  "service_desk_project_key": "VDSD",
+  "notes": "Plus-addressed Gmail aliases so each JSM customer is a unique registration that still delivers to matthewmsavage@gmail.com. Creating a customer sends a portal invite to that alias.",
+  "organizations": [
+    {
+      "name": "Northstar Wellness",
+      "slug": "northstar-wellness",
+      "kind": "customer",
+      "customers": [
+        {
+          "display_name": "Ava Chen",
+          "plus_tag": "northstar-wellness",
+          "role": "Brand ops"
+        },
+        {
+          "display_name": "Sofia Alvarez",
+          "plus_tag": "northstar-wellness-ops",
+          "role": "Ops"
+        }
+      ]
+    },
+    {
+      "name": "Harbor Peak Health",
+      "slug": "harbor-peak-health",
+      "kind": "customer",
+      "customers": [
+        {
+          "display_name": "Marcus Hale",
+          "plus_tag": "harbor-peak-health",
+          "role": "Fulfillment"
+        },
+        {
+          "display_name": "Chris Ng",
+          "plus_tag": "harbor-peak-health-ops",
+          "role": "Portal admin"
+        }
+      ]
+    },
+    {
+      "name": "Lumen Clinic",
+      "slug": "lumen-clinic",
+      "kind": "customer",
+      "customers": [
+        {
+          "display_name": "Priya Nair",
+          "plus_tag": "lumen-clinic",
+          "role": "Brand ops"
+        },
+        {
+          "display_name": "Elena Rossi",
+          "plus_tag": "lumen-clinic-ops",
+          "role": "Storefront"
+        }
+      ]
+    },
+    {
+      "name": "Atlas Fitness Care",
+      "slug": "atlas-fitness-care",
+      "kind": "customer",
+      "customers": [
+        {
+          "display_name": "Jon Park",
+          "plus_tag": "atlas-fitness-care",
+          "role": "Pharmacy ops"
+        },
+        {
+          "display_name": "Devon Brooks",
+          "plus_tag": "atlas-fitness-care-compliance",
+          "role": "Compliance"
+        }
+      ]
+    },
+    {
+      "name": "Cedar Ridge Telehealth",
+      "slug": "cedar-ridge-telehealth",
+      "kind": "customer",
+      "customers": [
+        {
+          "display_name": "Riley Cho",
+          "plus_tag": "cedar-ridge-telehealth",
+          "role": "Launchpad"
+        },
+        {
+          "display_name": "Sam Okonkwo",
+          "plus_tag": "cedar-ridge-telehealth-ops",
+          "role": "Care ops"
+        }
+      ]
+    },
+    {
+      "name": "Summit Peak Wellness",
+      "slug": "summit-peak-wellness",
+      "kind": "customer",
+      "customers": [
+        {
+          "display_name": "Jordan Velez",
+          "plus_tag": "summit-peak-wellness",
+          "role": "Coaching"
+        },
+        {
+          "display_name": "Morgan Patel",
+          "plus_tag": "summit-peak-wellness-ops",
+          "role": "Clinical ops"
+        }
+      ]
+    }
+  ]
+}

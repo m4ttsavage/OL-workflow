@@ -12,6 +12,7 @@ python scripts/jira_client.py          # probe auth
 python scripts/configure_jira.py       # create global custom fields
 python scripts/associate_screens.py    # add fields to VDSD/VDV screens
 python scripts/update_workflows.py    # Promote to Engineering + In Review
+python scripts/seed_jsm_customers.py  # dummy orgs + plus-addressed customers on VDSD
 
 # 2. Submit (local)
 python scripts/submit_intake.py path/to/payload.json --source vdsd
@@ -30,6 +31,7 @@ Local form (dependent fields, PHI checkbox, operator demo): open [`apps/intake/i
 ## Docs
 
 - [taxonomy](docs/taxonomy.md)
+- [JSM dummy orgs and customers](docs/jsm-customers.md)
 - [fields](docs/fields.md)
 - [workflows and SLAs](docs/workflows-and-slas.md)
 - [integrations](docs/integrations.md)

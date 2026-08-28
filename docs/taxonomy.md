@@ -65,8 +65,10 @@ When value is required, capture **Business Value USD** (annualized estimate) and
 
 ## Organization
 
-- **VDSD (customer):** Northstar Wellness, Harbor Peak Health, Lumen Clinic, Atlas Fitness Care, Other
+- **VDSD (customer):** Northstar Wellness, Harbor Peak Health, Lumen Clinic, Atlas Fitness Care, Cedar Ridge Telehealth, Summit Peak Wellness, Other
 - **VDV (internal):** IT, Clinical Ops, CS, RCM, People, Finance, Engineering, Veridian Dynamics Internal
+
+JSM Organizations (portal sharing) and plus-addressed customers live in [`config/jsm-customers.json`](../config/jsm-customers.json). Seed with `python scripts/seed_jsm_customers.py`. Emails are `matthewmsavage+[org-slug]@gmail.com` (and `…-[role]` for a second contact). Live IDs after a seed: [`config/jsm-customers-created.json`](../config/jsm-customers-created.json).
 
 ## Priority
 

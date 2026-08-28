@@ -1,0 +1,107 @@
+[
+  {
+    "source": "vdsd",
+    "promote": false,
+    "payload": {
+      "requester_name": "Riley Cho",
+      "requester_email": "matthewmsavage+cedar-ridge-telehealth@gmail.com",
+      "organization": "Cedar Ridge Telehealth",
+      "request_type": "New_Program_Launch",
+      "clinical_program": "Medical_Weight_Loss",
+      "subprogram": "GLP1_Program",
+      "impact_bucket": "Revenue",
+      "business_value_usd": 310000,
+      "value_type": "Revenue",
+      "priority": "P2",
+      "summary": "Launch GLP-1 storefront for Cedar Ridge under Launchpad",
+      "description": "Brand is ready to go live with medical weight loss. Need storefront, intake, and coach capacity checklist. No patient identifiers.",
+      "no_phi_ack": true
+    }
+  },
+  {
+    "source": "vdsd",
+    "promote": false,
+    "payload": {
+      "requester_name": "Sam Okonkwo",
+      "requester_email": "matthewmsavage+cedar-ridge-telehealth-ops@gmail.com",
+      "organization": "Cedar Ridge Telehealth",
+      "request_type": "Access",
+      "clinical_program": "NA",
+      "impact_bucket": "Operations",
+      "priority": "P3",
+      "summary": "Add Cedar Ridge care-ops admins to brand portal",
+      "description": "Need two brand-admin seats for care ops. Work emails will be confirmed in-thread. No patient records.",
+      "no_phi_ack": true
+    }
+  },
+  {
+    "source": "vdsd",
+    "promote": false,
+    "payload": {
+      "requester_name": "Jordan Velez",
+      "requester_email": "matthewmsavage+summit-peak-wellness@gmail.com",
+      "organization": "Summit Peak Wellness",
+      "request_type": "Feature",
+      "clinical_program": "Dietitians",
+      "subprogram": "RD_Visits",
+      "impact_bucket": "Revenue",
+      "business_value_usd": 90000,
+      "value_type": "Retention",
+      "priority": "P3",
+      "summary": "RD visit reminders when members skip two sessions",
+      "description": "Coaching wants in-app reminders after two missed registered dietitian visits. No member identifiers in this request.",
+      "no_phi_ack": true
+    }
+  },
+  {
+    "source": "vdsd",
+    "promote": false,
+    "payload": {
+      "requester_name": "Morgan Patel",
+      "requester_email": "matthewmsavage+summit-peak-wellness-ops@gmail.com",
+      "organization": "Summit Peak Wellness",
+      "request_type": "Clinical_Ops",
+      "clinical_program": "Hormones",
+      "subprogram": "Lab_Testing",
+      "impact_bucket": "Operations",
+      "priority": "P2",
+      "summary": "Lab-result SLA view for Summit Peak ops queue",
+      "description": "Ops cannot see which lab orders are past the 48-hour brand SLA. Need a queue filter by order age with no member identifiers.",
+      "no_phi_ack": true
+    }
+  },
+  {
+    "source": "vdsd",
+    "promote": false,
+    "payload": {
+      "requester_name": "Elena Rossi",
+      "requester_email": "matthewmsavage+lumen-clinic-ops@gmail.com",
+      "organization": "Lumen Clinic",
+      "request_type": "Bug",
+      "clinical_program": "Dermatology",
+      "subprogram": "Hair_Loss",
+      "impact_bucket": "Brand",
+      "priority": "P2",
+      "summary": "Hair-loss intake drops photo upload on mobile Safari",
+      "description": "Brand reports photo upload fails on iPhone Safari for the hair-loss intake. Workaround is desktop only. No patient images attached.",
+      "no_phi_ack": true
+    }
+  },
+  {
+    "source": "vdsd",
+    "promote": false,
+    "payload": {
+      "requester_name": "Devon Brooks",
+      "requester_email": "matthewmsavage+atlas-fitness-care-compliance@gmail.com",
+      "organization": "Atlas Fitness Care",
+      "request_type": "Question",
+      "clinical_program": "Supplements",
+      "subprogram": "White_Label_Line",
+      "impact_bucket": "Compliance",
+      "priority": "P4",
+      "summary": "Which claims language is approved for white-label protein copy?",
+      "description": "Need the current compliance-approved claims list before a landing-page refresh. No member data.",
+      "no_phi_ack": true
+    }
+  }
+]
