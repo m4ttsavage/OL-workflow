@@ -20,6 +20,14 @@
     { "vdsd": "VDSD-4", "vdv": "VDV-5", "link": "Polaris work item link" }
   ],
   "internal_direct": ["VDV-2"],
+  "github": {
+    "control_plane_pr": "https://github.com/m4ttsavage/OL-workflow/pull/1",
+    "demo_prs": [
+      { "vdv": "VDV-1", "vdsd": "VDSD-1", "pr": "https://github.com/m4ttsavage/OL-workflow/pull/4" },
+      { "vdv": "VDV-3", "vdsd": "VDSD-2", "pr": "https://github.com/m4ttsavage/OL-workflow/pull/5" },
+      { "vdv": "VDV-4", "vdsd": "VDSD-3", "pr": "https://github.com/m4ttsavage/OL-workflow/pull/3" }
+    ]
+  },
   "lovable": {
     "project_id": "f4958c29-f0e1-4e95-a908-1bb0c7975610",
     "published": "https://veridian-intake.lovable.app"
