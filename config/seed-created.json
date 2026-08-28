@@ -104,7 +104,7 @@
     "url": "https://veridian-dynamics.atlassian.net/servicedesk/customer/portal/1",
     "service_desk_id": 1
   },
-  "notes": "Batch-2 submitted with internal watchers. VDSD-11/13/15 promoted to RND.",
+  "notes": "Batch-2 submitted with internal watchers. VDSD-11/13/15 promoted to RND-7/8/9. Dummy GitHub PRs #12/#14/#13 merged into this branch.",
   "batch_2": [
     {
       "source": "vdsd",
