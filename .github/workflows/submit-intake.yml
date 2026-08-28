@@ -12,7 +12,7 @@ on:
           - vdv
         default: vdsd
       payload:
-        description: JSON copied from the Lovable or local intake form (minified is fine)
+        description: JSON copied from the local intake form or a payload file (minified is fine)
         required: true
         type: string
 

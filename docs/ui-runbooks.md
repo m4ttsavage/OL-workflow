@@ -20,7 +20,7 @@ Keep native portal types as fallback. Add portal request types that match taxono
 
 Feature, Bug, Incident, Operational change, Access, Question, Compliance, New program launch, Pharmacy / fulfillment, Clinical operations, Internal IT.
 
-Portal: **VDSD → Channels → Portal**. Intake Request Type on the issue is the taxonomy select (`customfield_10082`), independent of portal request type.
+Portal (customer submission UX): https://veridian-dynamics.atlassian.net/servicedesk/customer/portal/1 — **VDSD → Channels → Portal**. Internal employees file in project **VDV**. Intake Request Type on the issue is the taxonomy select (`customfield_10082`), independent of portal request type.
 
 ### SLAs (VDSD → Project settings → SLAs)
 
