@@ -39,6 +39,8 @@ Team-managed software project. Work types: Epic, Feature, Task, Subtask. Statuse
 
 GitHub PR open/merge comments on the RND issue; merge does not auto-transition.
 
+PM updates (`scripts/pm_updates.py`, playbook [`config/pm-updates.json`](../config/pm-updates.json)) run as **Ted Crisp** (`jira_admin_token` and Slack `U0BTAN0LM3N`). Ted comments on RND + the linked VDSD issue and replies in the existing `#dev-updates` threads. Other watchers (Lem, Veronica, Phil, Linda) are `@mentioned` in Slack; they are not impersonated as Jira comment authors.
+
 Bidirectional: when RND moves to In Review or Done, comment on the linked VDSD issue. VDSD **Waiting for customer** does not move RND. Status-sync Automation is UI-import only (`automation/status-sync.json`).
 
 ## VDV (unused)
