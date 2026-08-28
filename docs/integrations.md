@@ -42,7 +42,7 @@ Public pages (workspace The Shadow Realm, project **Veridian Intake Hub**):
 - `/customer` → VDSD
 - `/internal` → VDV
 
-Add Lovable secrets `ATLASSIAN_EMAIL` and `ATLASSIAN_API_TOKEN`. Local fallback forms: `apps/intake/`.
+The published form validates and returns copyable JSON. Create the Jira issue with **Actions → Submit intake** (`workflow_dispatch`) and repo secrets `JIRA_EMAIL` + `JIRA_API_TOKEN` — do not put the token in Lovable. Local fallback forms: `apps/intake/`.
 
 ## MCP and skills
 

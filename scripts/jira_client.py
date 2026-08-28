@@ -14,13 +14,13 @@ import urllib.request
 from typing import Any
 
 SITE = os.environ.get("ATLASSIAN_BASE_URL", "https://veridian-dynamics.atlassian.net").rstrip("/")
-EMAIL = os.environ.get("ATLASSIAN_EMAIL", "matthewmsavage@gmail.com")
+EMAIL = os.environ.get("ATLASSIAN_EMAIL") or os.environ.get("JIRA_EMAIL") or "matthewmsavage@gmail.com"
 CLOUD_ID = os.environ.get("ATLASSIAN_CLOUD_ID", "2cddf272-587f-44fe-92ed-d157674c74f1")
 BASE = os.environ.get("ATLASSIAN_API_BASE", f"https://api.atlassian.com/ex/jira/{CLOUD_ID}").rstrip("/")
 
 
 def _token() -> str:
-    for key in ("jira_admin_token", "ATLASSIAN_API_TOKEN", "jira_admin_veridian"):
+    for key in ("jira_admin_token", "ATLASSIAN_API_TOKEN", "JIRA_API_TOKEN", "jira_admin_veridian"):
         value = os.environ.get(key, "")
         if value:
             return value

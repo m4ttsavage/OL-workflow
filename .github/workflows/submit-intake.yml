@@ -1,0 +1,39 @@
+name: Submit intake
+
+on:
+  workflow_dispatch:
+    inputs:
+      source:
+        description: Customer (vdsd) or internal (vdv). Must match the form you used.
+        required: true
+        type: choice
+        options:
+          - vdsd
+          - vdv
+        default: vdsd
+      payload:
+        description: JSON copied from the Lovable or local intake form (minified is fine)
+        required: true
+        type: string
+
+jobs:
+  submit:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - name: Create Jira issue
+        env:
+          ATLASSIAN_EMAIL: ${{ secrets.JIRA_EMAIL }}
+          ATLASSIAN_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
+          SOURCE: ${{ inputs.source }}
+          PAYLOAD: ${{ inputs.payload }}
+        run: |
+          set -euo pipefail
+          if [[ -z "${ATLASSIAN_EMAIL:-}" || -z "${ATLASSIAN_API_TOKEN:-}" ]]; then
+            echo "Add repository secrets JIRA_EMAIL and JIRA_API_TOKEN (classic Atlassian API token)."
+            exit 1
+          fi
+          python3 -c 'import os, pathlib; pathlib.Path("/tmp/intake.json").write_text(os.environ["PAYLOAD"])'
+          python3 scripts/submit_intake.py /tmp/intake.json --source "$SOURCE"

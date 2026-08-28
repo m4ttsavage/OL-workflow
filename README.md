@@ -13,8 +13,11 @@ python scripts/configure_jira.py       # create global custom fields
 python scripts/associate_screens.py    # add fields to VDSD/VDV screens
 python scripts/update_workflows.py    # Promote to Engineering + In Review
 
-# 2. Submit
+# 2. Submit (local)
 python scripts/submit_intake.py path/to/payload.json --source vdsd
+
+# Or GitHub Actions → Submit intake (repo secrets JIRA_EMAIL + JIRA_API_TOKEN)
+# gh workflow run submit-intake.yml -f source=vdsd -f payload="$(jq -c . payload.json)"
 
 # 3. Promote to engineering
 python scripts/promote_request.py VDSD-123
@@ -26,7 +29,8 @@ Public form (Lovable):
 
 - Published: https://veridian-intake.lovable.app (`/customer`, `/internal`)
 - Editor: https://lovable.dev/projects/f4958c29-f0e1-4e95-a908-1bb0c7975610
-- Add secrets `ATLASSIAN_EMAIL` and `ATLASSIAN_API_TOKEN` (classic API token) so submit creates Jira issues. Until then, the form validates and returns a copyable JSON payload.
+- The form validates and returns copyable JSON (no Jira token in the browser).
+- Create the issue with **Actions → Submit intake** (`workflow_dispatch`) using repo secrets `JIRA_EMAIL` and `JIRA_API_TOKEN`. See [credentials](docs/credentials.md).
 
 ## Docs
 

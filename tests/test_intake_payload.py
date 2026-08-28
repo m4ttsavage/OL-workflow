@@ -68,6 +68,13 @@ class IntakePayloadTests(unittest.TestCase):
         self.assertEqual(fields["customfield_10090"], {"id": "10143"})
         self.assertEqual(fields["customfield_10086"], 240000.0)
 
+    def test_resolve_source(self):
+        import submit_intake
+
+        self.assertEqual(submit_intake.resolve_source({"source": "vdsd"}, None), "vdsd")
+        self.assertEqual(submit_intake.resolve_source({}, "vdv"), "vdv")
+        self.assertIsNone(submit_intake.resolve_source({}, None))
+
 
 if __name__ == "__main__":
     unittest.main()
