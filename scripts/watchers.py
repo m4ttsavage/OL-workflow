@@ -64,11 +64,41 @@ def add_watcher(issue_key: str, account_id: str) -> None:
     jira.post(f"/rest/api/3/issue/{issue_key}/watchers", account_id)
 
 
+VDSD_TEAM_ROLE = "10016"
+RND_MEMBER_ROLE = "10011"
+
+
+def role_account_ids(project: str, role_id: str) -> set[str]:
+    data = jira.get(f"/rest/api/3/project/{project}/role/{role_id}")
+    ids: set[str] = set()
+    for actor in data.get("actors") or []:
+        aid = (actor.get("actorUser") or {}).get("accountId")
+        if aid:
+            ids.add(aid)
+    return ids
+
+
+def ensure_project_access(users: list[dict]) -> None:
+    """Grant JSM team / RND member so internals can watch issues."""
+    wanted = [u["account_id"] for u in users]
+    for project, role_id in (("VDSD", VDSD_TEAM_ROLE), ("RND", RND_MEMBER_ROLE)):
+        have = role_account_ids(project, role_id)
+        missing = [aid for aid in wanted if aid not in have]
+        if not missing:
+            continue
+        jira.post(f"/rest/api/3/project/{project}/role/{role_id}", {"user": missing})
+
+
 def add_watchers(issue_key: str, tokens: list[str] | str | None) -> list[dict[str, Any]]:
+    users = resolve_many(tokens)
+    ensure_project_access(users)
     added = []
-    for user in resolve_many(tokens):
-        add_watcher(issue_key, user["account_id"])
-        added.append(user)
+    for user in users:
+        try:
+            add_watcher(issue_key, user["account_id"])
+            added.append(user)
+        except Exception as exc:
+            print("watcher fail", issue_key, user["id"], exc)
     return added
 
 

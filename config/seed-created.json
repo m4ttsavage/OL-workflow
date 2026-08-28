@@ -11,27 +11,152 @@
     "VDSD-5",
     "VDSD-6",
     "VDSD-7",
-    "VDSD-8"
+    "VDSD-8",
+    "VDSD-11",
+    "VDSD-12",
+    "VDSD-13",
+    "VDSD-14",
+    "VDSD-15",
+    "VDSD-16"
   ],
   "promoted": [
-    { "vdsd": "VDSD-1", "vdv": "VDV-1", "link": "Polaris work item link" },
-    { "vdsd": "VDSD-2", "vdv": "VDV-3", "link": "Polaris work item link" },
-    { "vdsd": "VDSD-3", "vdv": "VDV-4", "link": "Polaris work item link" },
-    { "vdsd": "VDSD-4", "vdv": "VDV-5", "link": "Polaris work item link" },
-    { "vdsd": "VDSD-8", "rnd": "RND-5", "link": "Polaris work item link" }
+    {
+      "vdsd": "VDSD-1",
+      "vdv": "VDV-1",
+      "link": "Polaris work item link"
+    },
+    {
+      "vdsd": "VDSD-2",
+      "vdv": "VDV-3",
+      "link": "Polaris work item link"
+    },
+    {
+      "vdsd": "VDSD-3",
+      "vdv": "VDV-4",
+      "link": "Polaris work item link"
+    },
+    {
+      "vdsd": "VDSD-4",
+      "vdv": "VDV-5",
+      "link": "Polaris work item link"
+    },
+    {
+      "vdsd": "VDSD-8",
+      "rnd": "RND-5",
+      "link": "Polaris work item link"
+    },
+    {
+      "vdsd": "VDSD-11",
+      "rnd": "RND-7",
+      "link": "Polaris work item link"
+    },
+    {
+      "vdsd": "VDSD-13",
+      "rnd": "RND-8",
+      "link": "Polaris work item link"
+    },
+    {
+      "vdsd": "VDSD-15",
+      "rnd": "RND-9",
+      "link": "Polaris work item link"
+    }
   ],
-  "internal_direct": ["VDV-2", "RND-6"],
+  "internal_direct": [
+    "VDV-2",
+    "RND-6"
+  ],
   "github": {
     "control_plane_pr": "https://github.com/m4ttsavage/OL-workflow/pull/1",
     "demo_prs": [
-      { "vdv": "VDV-1", "vdsd": "VDSD-1", "pr": "https://github.com/m4ttsavage/OL-workflow/pull/4" },
-      { "vdv": "VDV-3", "vdsd": "VDSD-2", "pr": "https://github.com/m4ttsavage/OL-workflow/pull/5" },
-      { "vdv": "VDV-4", "vdsd": "VDSD-3", "pr": "https://github.com/m4ttsavage/OL-workflow/pull/3" }
+      {
+        "vdv": "VDV-1",
+        "vdsd": "VDSD-1",
+        "pr": "https://github.com/m4ttsavage/OL-workflow/pull/4"
+      },
+      {
+        "vdv": "VDV-3",
+        "vdsd": "VDSD-2",
+        "pr": "https://github.com/m4ttsavage/OL-workflow/pull/5"
+      },
+      {
+        "vdv": "VDV-4",
+        "vdsd": "VDSD-3",
+        "pr": "https://github.com/m4ttsavage/OL-workflow/pull/3"
+      }
     ]
   },
   "jsm_portal": {
     "url": "https://veridian-dynamics.atlassian.net/servicedesk/customer/portal/1",
     "service_desk_id": 1
   },
-  "notes": "Custom fields created and backfilled on VDSD-1..8 and VDV-1..5. New engineering destination is RND (team-managed). VDSD-8 promoted to RND-5 (Task). Internal Feature RND-6 filed with source=rnd. Promote to Engineering (status 10020) is on Submit a request; In Review (10021) is on Task. Portal request types, SLAs, and Automation import remain UI. Slack parents posted; invite Lem/Veronica/Phil/Linda to Jira for watcher DMs."
+  "notes": "Batch-2 submitted with internal watchers. VDSD-11/13/15 promoted to RND.",
+  "batch_2": [
+    {
+      "source": "vdsd",
+      "key": "VDSD-11",
+      "promote": true,
+      "watchers": [
+        "ted",
+        "lem",
+        "linda"
+      ],
+      "summary": "Launch GLP-1 storefront for Cedar Ridge under Launchpad",
+      "rnd": "RND-7"
+    },
+    {
+      "source": "vdsd",
+      "key": "VDSD-12",
+      "promote": false,
+      "watchers": [
+        "ted",
+        "linda"
+      ],
+      "summary": "Add Cedar Ridge care-ops admins to brand portal"
+    },
+    {
+      "source": "vdsd",
+      "key": "VDSD-13",
+      "promote": true,
+      "watchers": [
+        "ted",
+        "lem",
+        "veronica"
+      ],
+      "summary": "RD visit reminders when members skip two sessions",
+      "rnd": "RND-8"
+    },
+    {
+      "source": "vdsd",
+      "key": "VDSD-14",
+      "promote": false,
+      "watchers": [
+        "ted",
+        "phil",
+        "linda"
+      ],
+      "summary": "Lab-result SLA view for Summit Peak ops queue"
+    },
+    {
+      "source": "vdsd",
+      "key": "VDSD-15",
+      "promote": true,
+      "watchers": [
+        "ted",
+        "lem",
+        "veronica"
+      ],
+      "summary": "Hair-loss intake drops photo upload on mobile Safari",
+      "rnd": "RND-9"
+    },
+    {
+      "source": "vdsd",
+      "key": "VDSD-16",
+      "promote": false,
+      "watchers": [
+        "ted",
+        "linda"
+      ],
+      "summary": "Which claims language is approved for white-label protein copy?"
+    }
+  ]
 }

@@ -2,6 +2,7 @@
   "channel_id": "C0BT787UKGS",
   "channel": "#dev-updates",
   "posted_at": "2026-08-28T05:04:00Z",
+  "batch_2_posted_at": "2026-08-28T14:23:00Z",
   "parents": {
     "VDSD-1": {
       "ts": "1787893428.521679",
@@ -14,6 +15,30 @@
     "VDSD-7": {
       "ts": "1787893437.768099",
       "url": "https://veridian-dynamics-ltd.slack.com/archives/C0BT787UKGS/p1787893437768099"
+    },
+    "VDSD-11": {
+      "ts": "1787927029.285219",
+      "url": "https://veridian-dynamics-ltd.slack.com/archives/C0BT787UKGS/p1787927029285219"
+    },
+    "VDSD-12": {
+      "ts": "1787927029.415619",
+      "url": "https://veridian-dynamics-ltd.slack.com/archives/C0BT787UKGS/p1787927029415619"
+    },
+    "VDSD-13": {
+      "ts": "1787927029.569799",
+      "url": "https://veridian-dynamics-ltd.slack.com/archives/C0BT787UKGS/p1787927029569799"
+    },
+    "VDSD-14": {
+      "ts": "1787927029.732249",
+      "url": "https://veridian-dynamics-ltd.slack.com/archives/C0BT787UKGS/p1787927029732249"
+    },
+    "VDSD-15": {
+      "ts": "1787927029.946279",
+      "url": "https://veridian-dynamics-ltd.slack.com/archives/C0BT787UKGS/p1787927029946279"
+    },
+    "VDSD-16": {
+      "ts": "1787927030.075759",
+      "url": "https://veridian-dynamics-ltd.slack.com/archives/C0BT787UKGS/p1787927030075759"
     },
     "VDV-2": {
       "ts": "1787893437.904199",
@@ -32,6 +57,18 @@
     "VDV-3": {
       "thread_of": "VDSD-2",
       "url": "https://veridian-dynamics-ltd.slack.com/archives/C0BT787UKGS/p1787893444810509?thread_ts=1787893437.563729"
+    },
+    "RND-7": {
+      "thread_of": "VDSD-11",
+      "url": "https://veridian-dynamics-ltd.slack.com/archives/C0BT787UKGS/p1787927043564459?thread_ts=1787927029.285219"
+    },
+    "RND-8": {
+      "thread_of": "VDSD-13",
+      "url": "https://veridian-dynamics-ltd.slack.com/archives/C0BT787UKGS/p1787927043722679?thread_ts=1787927029.569799"
+    },
+    "RND-9": {
+      "thread_of": "VDSD-15",
+      "url": "https://veridian-dynamics-ltd.slack.com/archives/C0BT787UKGS/p1787927043919299?thread_ts=1787927029.946279"
     }
   },
   "watcher_dms": {
@@ -41,14 +78,41 @@
       "dm_channel": "D0BT0QG1H3M",
       "urls": [
         "https://veridian-dynamics-ltd.slack.com/archives/D0BT0QG1H3M/p1787893461247289",
-        "https://veridian-dynamics-ltd.slack.com/archives/D0BT0QG1H3M/p1787893461488389"
+        "https://veridian-dynamics-ltd.slack.com/archives/D0BT0QG1H3M/p1787893461488389",
+        "https://veridian-dynamics-ltd.slack.com/archives/D0BT0QG1H3M/p1787927044091369"
+      ]
+    },
+    "Lem Hewitt": {
+      "email": "matthewmsavage+DYNlem@gmail.com",
+      "user_id": "U0BT4L8T5PD",
+      "dm_channel": "D0BU58Y25CY",
+      "urls": [
+        "https://veridian-dynamics-ltd.slack.com/archives/D0BU58Y25CY/p1787927044334339"
+      ]
+    },
+    "Veronica Palmer": {
+      "email": "matthewmsavage+DYNveronica@gmail.com",
+      "user_id": "U0BT4LBKMU3",
+      "dm_channel": "D0BTEHWGATW",
+      "urls": [
+        "https://veridian-dynamics-ltd.slack.com/archives/D0BTEHWGATW/p1787927044604269"
+      ]
+    },
+    "Phil Mymen": {
+      "email": "matthewmsavage+DYNphil@gmail.com",
+      "user_id": "U0BT8V9E3B8",
+      "dm_channel": "D0BT4LAMACB",
+      "urls": [
+        "https://veridian-dynamics-ltd.slack.com/archives/D0BT4LAMACB/p1787927044835519"
+      ]
+    },
+    "Linda Zwordling": {
+      "email": "matthewmsavage+DYNlinda@gmail.com",
+      "user_id": "U0BU5926QMN",
+      "dm_channel": "D0BT8VCQPLN",
+      "urls": [
+        "https://veridian-dynamics-ltd.slack.com/archives/D0BT8VCQPLN/p1787927045067699"
       ]
     }
-  },
-  "slack_users_not_in_jira": [
-    { "name": "Lem Hewitt", "email": "matthewmsavage+DYNlem@gmail.com", "user_id": "U0BT4L8T5PD" },
-    { "name": "Veronica", "email": "matthewmsavage+DYNveronica@gmail.com", "user_id": "U0BT4LBKMU3" },
-    { "name": "Phil", "email": "matthewmsavage+DYNphil@gmail.com", "user_id": "U0BT8V9E3B8" },
-    { "name": "Linda", "email": "matthewmsavage+DYNlinda@gmail.com", "user_id": "U0BU5926QMN" }
-  ]
+  }
 }
