@@ -41,6 +41,21 @@ Project settings → Automation → Create / Import (JSON import may be rejected
 
 Until Automation is imported, use `python scripts/promote_request.py VDSD-n`.
 
+## Dummy JSM organizations and customers
+
+`python scripts/seed_jsm_customers.py` creates (or reuses) the six brand Organizations on **VDSD** and two portal customers per org. Emails are Gmail plus-aliases of `matthewmsavage@gmail.com` so each registration is unique and still delivers to the same inbox.
+
+| Organization | Primary | Ops / second contact |
+| --- | --- | --- |
+| Northstar Wellness | `matthewmsavage+northstar-wellness@gmail.com` | `…+northstar-wellness-ops@gmail.com` |
+| Harbor Peak Health | `matthewmsavage+harbor-peak-health@gmail.com` | `…+harbor-peak-health-ops@gmail.com` |
+| Lumen Clinic | `matthewmsavage+lumen-clinic@gmail.com` | `…+lumen-clinic-ops@gmail.com` |
+| Atlas Fitness Care | `matthewmsavage+atlas-fitness-care@gmail.com` | `…+atlas-fitness-care-compliance@gmail.com` |
+| Cedar Ridge Telehealth | `matthewmsavage+cedar-ridge-telehealth@gmail.com` | `…+cedar-ridge-telehealth-ops@gmail.com` |
+| Summit Peak Wellness | `matthewmsavage+summit-peak-wellness@gmail.com` | `…+summit-peak-wellness-ops@gmail.com` |
+
+Ready-to-submit payloads for the next batch: [`config/seed-requests-batch-2.json`](../config/seed-requests-batch-2.json). Do **not** seed those until you want live VDSD issues. Creating customers sends portal invites to the plus-addresses.
+
 ## GitHub for Jira
 
 Already installed. Connect repository `m4ttsavage/DummyCompany` (or this repo until that exists) to project **VDV**.

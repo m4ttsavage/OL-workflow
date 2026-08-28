@@ -8,6 +8,18 @@ from typing import Any
 
 ROOT = Path(__file__).resolve().parents[1]
 PATH = ROOT / "config" / "field-ids.json"
+JSM_CREATED = ROOT / "config" / "jsm-customers-created.json"
+
+
+def jsm_organization_id(name: str | None) -> str | None:
+    """Native JSM Organizations field id from the last seed_jsm_customers run."""
+    if not name or not JSM_CREATED.exists():
+        return None
+    data = json.loads(JSM_CREATED.read_text())
+    for org in data.get("organizations") or []:
+        if org.get("name") == name and org.get("id") is not None:
+            return str(org["id"])
+    return None
 
 
 def load() -> dict[str, Any]:
@@ -94,4 +106,7 @@ def custom_fields_from_payload(payload: dict, source: str) -> dict[str, Any]:
         put_select("No PHI Acknowledgement", "Yes")
     elif ack in (False, "No", "no"):
         put_select("No PHI Acknowledgement", "No")
+    org_id = jsm_organization_id(payload.get("organization"))
+    if org_id:
+        out["customfield_10002"] = [{"id": org_id}]
     return out

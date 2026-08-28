@@ -4,7 +4,7 @@
     "promote": true,
     "payload": {
       "requester_name": "Ava Chen",
-      "requester_email": "ava.chen@northstar.example",
+      "requester_email": "matthewmsavage+northstar-wellness@gmail.com",
       "organization": "Northstar Wellness",
       "request_type": "Feature",
       "clinical_program": "Medical_Weight_Loss",
@@ -23,7 +23,7 @@
     "promote": true,
     "payload": {
       "requester_name": "Marcus Hale",
-      "requester_email": "marcus.hale@harborpeak.example",
+      "requester_email": "matthewmsavage+harbor-peak-health@gmail.com",
       "organization": "Harbor Peak Health",
       "request_type": "Bug",
       "clinical_program": "Hormones",
@@ -40,7 +40,7 @@
     "promote": true,
     "payload": {
       "requester_name": "Priya Nair",
-      "requester_email": "priya.nair@lumenclinic.example",
+      "requester_email": "matthewmsavage+lumen-clinic@gmail.com",
       "organization": "Lumen Clinic",
       "request_type": "New_Program_Launch",
       "clinical_program": "Dermatology",
@@ -59,7 +59,7 @@
     "promote": true,
     "payload": {
       "requester_name": "Jon Park",
-      "requester_email": "jon.park@atlasfitness.example",
+      "requester_email": "matthewmsavage+atlas-fitness-care@gmail.com",
       "organization": "Atlas Fitness Care",
       "request_type": "Pharmacy_Fulfillment",
       "clinical_program": "Peptides",
@@ -78,7 +78,7 @@
     "promote": false,
     "payload": {
       "requester_name": "Sofia Alvarez",
-      "requester_email": "sofia.alvarez@northstar.example",
+      "requester_email": "matthewmsavage+northstar-wellness-ops@gmail.com",
       "organization": "Northstar Wellness",
       "request_type": "Question",
       "clinical_program": "Sleep_Testing",
@@ -95,7 +95,7 @@
     "promote": false,
     "payload": {
       "requester_name": "Chris Ng",
-      "requester_email": "chris.ng@harborpeak.example",
+      "requester_email": "matthewmsavage+harbor-peak-health-ops@gmail.com",
       "organization": "Harbor Peak Health",
       "request_type": "Access",
       "clinical_program": "NA",
@@ -111,7 +111,7 @@
     "promote": false,
     "payload": {
       "requester_name": "Elena Rossi",
-      "requester_email": "elena.rossi@lumenclinic.example",
+      "requester_email": "matthewmsavage+lumen-clinic-ops@gmail.com",
       "organization": "Lumen Clinic",
       "request_type": "Incident",
       "clinical_program": "Platform",
@@ -128,7 +128,7 @@
     "promote": false,
     "payload": {
       "requester_name": "Devon Brooks",
-      "requester_email": "devon.brooks@atlasfitness.example",
+      "requester_email": "matthewmsavage+atlas-fitness-care-compliance@gmail.com",
       "organization": "Atlas Fitness Care",
       "request_type": "Compliance",
       "clinical_program": "Microdosing",
