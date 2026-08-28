@@ -1,0 +1,16 @@
+{
+  "fields": {
+    "project": { "key": "VDV" },
+    "issuetype": { "name": "Task" },
+    "summary": "[VDSD-1] Coaching drop-off prompts",
+    "priority": { "name": "High" },
+    "labels": [
+      "source:vdsd",
+      "type:Feature",
+      "program:Medical_Weight_Loss",
+      "sub:Care_Coaching",
+      "impact:Revenue",
+      "org:northstar-wellness"
+    ]
+  }
+}

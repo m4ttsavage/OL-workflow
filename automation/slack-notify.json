@@ -1,0 +1,14 @@
+{
+  "name": "Notify #dev-updates",
+  "description": "On VDSD create, VDV create, and VDV status change, post to Slack #dev-updates. Watcher DMs are handled by scripts/notify_slack.py or Slack MCP (native Slack-for-Jira does not DM all watchers).",
+  "state": "ENABLED",
+  "channel": "#dev-updates",
+  "channel_id": "C0BT787UKGS",
+  "events": [
+    "VDSD issue created",
+    "VDSD promoted (comment contains Promoted to engineering)",
+    "VDV status In Review or Done",
+    "GitHub PR opened/merged (from Actions jira-comment.yml)"
+  ],
+  "message": "*{{issue.key}}* — {{issue.summary}}\nhttps://veridian-dynamics.atlassian.net/browse/{{issue.key}}"
+}

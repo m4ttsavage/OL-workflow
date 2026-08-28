@@ -1,0 +1,52 @@
+name: Comment on VDV issue
+
+on:
+  pull_request:
+    types: [opened, closed]
+  release:
+    types: [published]
+
+jobs:
+  comment:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Post to Jira
+        env:
+          JIRA_EMAIL: ${{ secrets.JIRA_EMAIL }}
+          JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
+          TITLE: ${{ github.event.pull_request.title || github.event.release.name }}
+          BODY: ${{ github.event.pull_request.body || github.event.release.body }}
+          BRANCH: ${{ github.head_ref || '' }}
+          URL: ${{ github.event.pull_request.html_url || github.event.release.html_url }}
+          ACTION: ${{ github.event.action }}
+        run: |
+          set -euo pipefail
+          if [[ -z "${JIRA_API_TOKEN:-}" ]]; then
+            echo "JIRA_API_TOKEN secret not set; skip Jira comment."
+            exit 0
+          fi
+          blob="$TITLE $BODY $BRANCH"
+          key=$(grep -Eo 'VDV-[0-9]+' <<<"$blob" | head -n1 || true)
+          if [[ -z "$key" ]]; then
+            echo "No VDV key; skip comment."
+            exit 0
+          fi
+          export KEY="$key"
+          export TEXT="GitHub ${ACTION}: ${URL}"
+          python3 - <<'PY'
+          import json, os, urllib.request, base64
+          email = os.environ["JIRA_EMAIL"]
+          token = os.environ["JIRA_API_TOKEN"]
+          key = os.environ["KEY"]
+          text = os.environ["TEXT"]
+          auth = base64.b64encode(f"{email}:{token}".encode()).decode()
+          body = {"body": {"type": "doc", "version": 1, "content": [{"type": "paragraph", "content": [{"type": "text", "text": text}]}]}}
+          req = urllib.request.Request(
+              f"https://veridian-dynamics.atlassian.net/rest/api/3/issue/{key}/comment",
+              data=json.dumps(body).encode(),
+              headers={"Authorization": f"Basic {auth}", "Content-Type": "application/json", "Accept": "application/json"},
+              method="POST",
+          )
+          with urllib.request.urlopen(req) as resp:
+              print(resp.status, key)
+          PY

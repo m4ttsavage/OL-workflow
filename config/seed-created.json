@@ -1,0 +1,28 @@
+{
+  "verified": {
+    "customer": "VDSD-1",
+    "internal": "VDV-2"
+  },
+  "vdsd": [
+    "VDSD-1",
+    "VDSD-2",
+    "VDSD-3",
+    "VDSD-4",
+    "VDSD-5",
+    "VDSD-6",
+    "VDSD-7",
+    "VDSD-8"
+  ],
+  "promoted": [
+    { "vdsd": "VDSD-1", "vdv": "VDV-1", "link": "Polaris work item link" },
+    { "vdsd": "VDSD-2", "vdv": "VDV-3", "link": "Polaris work item link" },
+    { "vdsd": "VDSD-3", "vdv": "VDV-4", "link": "Polaris work item link" },
+    { "vdsd": "VDSD-4", "vdv": "VDV-5", "link": "Polaris work item link" }
+  ],
+  "internal_direct": ["VDV-2"],
+  "lovable": {
+    "project_id": "f4958c29-f0e1-4e95-a908-1bb0c7975610",
+    "published": "https://veridian-intake.lovable.app"
+  },
+  "notes": "Custom fields, SLAs, Promote to Engineering status, and Slack posts still need the UI runbook / a classic API token / Slack MCP. Seeded as site admin; add 3-4 matching Jira+Slack users before watcher DM fan-out."
+}
