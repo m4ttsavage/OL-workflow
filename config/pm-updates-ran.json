@@ -1,0 +1,60 @@
+{
+  "ran_at": "2026-08-28T20:12:03Z",
+  "author": "Ted Crisp",
+  "issues": [
+    {
+      "key": "RND-7",
+      "status": "Done",
+      "last_comment_author": "Ted Crisp",
+      "last_comment": "Launchpad checklist shipped in PR #12; closing engineering work."
+    },
+    {
+      "key": "RND-8",
+      "status": "In Progress",
+      "last_comment_author": "Ted Crisp",
+      "last_comment": "Reminders scoped with Veronica; implementation in PR #14 still in progress."
+    },
+    {
+      "key": "RND-9",
+      "status": "In Progress",
+      "last_comment_author": "Ted Crisp",
+      "last_comment": "Safari upload fix merged in PR #13; waiting on brand to confirm mobile."
+    },
+    {
+      "key": "VDSD-11",
+      "status": "Promote to Engineering",
+      "last_comment_author": "Ted Crisp",
+      "last_comment": "Promoted to engineering. Launchpad checklist shipped in PR #12; brand can schedule go-live."
+    },
+    {
+      "key": "VDSD-12",
+      "status": "Pending",
+      "last_comment_author": "Ted Crisp",
+      "last_comment": "Need the two care-ops work emails before we can grant seats."
+    },
+    {
+      "key": "VDSD-13",
+      "status": "Promote to Engineering",
+      "last_comment_author": "Ted Crisp",
+      "last_comment": "Promoted to engineering. Reminders scoped with Veronica; implementation in PR #14 still in progress."
+    },
+    {
+      "key": "VDSD-14",
+      "status": "In Progress",
+      "last_comment_author": "Ted Crisp",
+      "last_comment": "Ops queue filter stays on the desk; not an RND item. Phil can spec columns."
+    },
+    {
+      "key": "VDSD-15",
+      "status": "Promote to Engineering",
+      "last_comment_author": "Ted Crisp",
+      "last_comment": "Promoted to engineering. Safari upload fix merged in PR #13; waiting on brand to confirm mobile."
+    },
+    {
+      "key": "VDSD-16",
+      "status": "Done",
+      "last_comment_author": "Ted Crisp",
+      "last_comment": "Point to existing approved-claims list; no engineering ticket."
+    }
+  ]
+}

@@ -52,6 +52,19 @@ class PmUpdatesPlaybookTests(unittest.TestCase):
         self.assertTrue(pm_updates.should_skip("VDSD-11", "In Progress", "In Progress"))
         self.assertFalse(pm_updates.should_skip("VDSD-11", "To Do", "In Progress"))
 
+    def test_recorded_run_and_slack_replies(self):
+        ran = json.loads((ROOT / "config" / "pm-updates-ran.json").read_text())
+        self.assertEqual(ran["author"], "Ted Crisp")
+        keys = {row["key"] for row in ran["issues"]}
+        self.assertEqual(keys, {f"VDSD-{n}" for n in range(11, 17)} | {"RND-7", "RND-8", "RND-9"})
+        for row in ran["issues"]:
+            self.assertEqual(row["last_comment_author"], "Ted Crisp")
+        threads = SLACK.get("threads") or {}
+        for n in range(11, 17):
+            rec = threads[f"pm-VDSD-{n}"]
+            self.assertEqual(rec["thread_of"], f"VDSD-{n}")
+            self.assertTrue(rec.get("ts"))
+
 
 if __name__ == "__main__":
     unittest.main()
