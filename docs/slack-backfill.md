@@ -2,7 +2,7 @@
 
 Posted 2026-08-28 via Slack MCP. Live links: [`config/slack-posted.json`](../config/slack-posted.json).
 
-Watcher DMs went to Ted Crisp (`U0BTAN0LM3N`). Lem / Veronica / Phil / Linda are in Slack but not in Jira yet.
+Watcher DMs went to Ted Crisp (`U0BTAN0LM3N`). Lem Hewitt, Veronica Palmer, Phil Mymen, and Linda Zwordling now have Atlassian accounts and can be Jira watchers (`config/internal-users.json`).
 
 Machine-readable copy: [`config/slack-backfill.json`](../config/slack-backfill.json). Sender: `python scripts/notify_slack.py` when `SLACK_BOT_TOKEN` is set.
 

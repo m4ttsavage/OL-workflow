@@ -1,0 +1,50 @@
+{
+  "notes": "Veridian Dynamics internal employees. Jira account IDs are Atlassian accounts; Slack IDs match #dev-updates. Emails for Lem/Veronica/Phil/Linda are hidden by Jira user privacy but match the Slack profiles.",
+  "users": [
+    {
+      "id": "ted",
+      "name": "Ted Crisp",
+      "jira_display_name": "Matthew Savage",
+      "email": "matthewmsavage@gmail.com",
+      "account_id": "712020:5d7cfb51-a88e-4af1-b2ea-3e3ca5816635",
+      "slack_user_id": "U0BTAN0LM3N",
+      "role": "Engineering"
+    },
+    {
+      "id": "lem",
+      "name": "Lem Hewitt",
+      "jira_display_name": "Lem Hewitt",
+      "email": "matthewmsavage+DYNlem@gmail.com",
+      "account_id": "712020:9fc01e00-4a2d-474a-8021-cbbfc03a3120",
+      "slack_user_id": "U0BT4L8T5PD",
+      "role": "Sr. Researcher"
+    },
+    {
+      "id": "veronica",
+      "name": "Veronica Palmer",
+      "jira_display_name": "Veronica Palmer",
+      "email": "matthewmsavage+DYNveronica@gmail.com",
+      "account_id": "712020:4f170f3b-0b85-4861-b0c0-e1fcc44f186e",
+      "slack_user_id": "U0BT4LBKMU3",
+      "role": "Product"
+    },
+    {
+      "id": "phil",
+      "name": "Phil Mymen",
+      "jira_display_name": "Phil Mymen",
+      "email": "matthewmsavage+DYNphil@gmail.com",
+      "account_id": "712020:88d08b80-328d-4799-830f-d8c9d1e48f91",
+      "slack_user_id": "U0BT8V9E3B8",
+      "role": "Engineering"
+    },
+    {
+      "id": "linda",
+      "name": "Linda Zwordling",
+      "jira_display_name": "Linda Zwordling",
+      "email": "matthewmsavage+DYNlinda@gmail.com",
+      "account_id": "712020:97d45283-2563-4a60-9ea3-90ebbce1d9c4",
+      "slack_user_id": "U0BU5926QMN",
+      "role": "Project Manager"
+    }
+  ]
+}

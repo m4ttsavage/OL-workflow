@@ -10,6 +10,12 @@ Creates six brand **Organizations** on VDSD (service desk id 1) and two **custom
 
 Live IDs after a successful seed: [`config/jsm-customers-created.json`](../config/jsm-customers-created.json). Intake payloads set native Organizations (`customfield_10002`) from that file.
 
-A second batch of **unsubmitted** VDSD payloads is in [`config/seed-requests-batch-2.json`](../config/seed-requests-batch-2.json). Submit later with `python scripts/seed_demo.py` after pointing it at that file, or `python scripts/submit_intake.py` per payload.
+A second batch of VDSD payloads is in [`config/seed-requests-batch-2.json`](../config/seed-requests-batch-2.json) (Cedar Ridge, Summit Peak, plus Lumen/Atlas follow-ups). Each item lists internal watchers from [`config/internal-users.json`](../config/internal-users.json). Half are flagged `promote: true` for RND.
+
+```bash
+python scripts/seed_demo.py --file config/seed-requests-batch-2.json
+python scripts/promote_request.py VDSD-n   # for each promote: true key
+python scripts/watchers.py VDSD-n ted,linda
+```
 
 Creating a customer sends a JSM portal invite to the plus-address.
