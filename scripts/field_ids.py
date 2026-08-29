@@ -110,5 +110,5 @@ def custom_fields_from_payload(payload: dict, source: str) -> dict[str, Any]:
     if source == "vdsd":
         org_id = jsm_organization_id(payload.get("organization"))
         if org_id:
-            out["customfield_10002"] = [{"id": org_id}]
+            out["customfield_10002"] = [int(org_id)]
     return out

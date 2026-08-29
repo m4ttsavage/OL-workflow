@@ -1,7 +1,8 @@
 [
   {
     "source": "vdsd",
-    "promote": false,
+    "promote": true,
+    "watchers": ["ted", "lem", "linda"],
     "payload": {
       "requester_name": "Riley Cho",
       "requester_email": "matthewmsavage+cedar-ridge-telehealth@gmail.com",
@@ -21,6 +22,7 @@
   {
     "source": "vdsd",
     "promote": false,
+    "watchers": ["ted", "linda"],
     "payload": {
       "requester_name": "Sam Okonkwo",
       "requester_email": "matthewmsavage+cedar-ridge-telehealth-ops@gmail.com",
@@ -36,7 +38,8 @@
   },
   {
     "source": "vdsd",
-    "promote": false,
+    "promote": true,
+    "watchers": ["ted", "lem", "veronica"],
     "payload": {
       "requester_name": "Jordan Velez",
       "requester_email": "matthewmsavage+summit-peak-wellness@gmail.com",
@@ -56,6 +59,7 @@
   {
     "source": "vdsd",
     "promote": false,
+    "watchers": ["ted", "phil", "linda"],
     "payload": {
       "requester_name": "Morgan Patel",
       "requester_email": "matthewmsavage+summit-peak-wellness-ops@gmail.com",
@@ -72,7 +76,8 @@
   },
   {
     "source": "vdsd",
-    "promote": false,
+    "promote": true,
+    "watchers": ["ted", "lem", "veronica"],
     "payload": {
       "requester_name": "Elena Rossi",
       "requester_email": "matthewmsavage+lumen-clinic-ops@gmail.com",
@@ -90,6 +95,7 @@
   {
     "source": "vdsd",
     "promote": false,
+    "watchers": ["ted", "linda"],
     "payload": {
       "requester_name": "Devon Brooks",
       "requester_email": "matthewmsavage+atlas-fitness-care-compliance@gmail.com",

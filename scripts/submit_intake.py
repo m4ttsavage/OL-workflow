@@ -14,6 +14,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import intake_payload  # noqa: E402
 import jira_client as jira  # noqa: E402
+import watchers  # noqa: E402
 
 
 def load_payload(path: str) -> dict:
@@ -55,6 +56,10 @@ def main() -> int:
     fields = intake_payload.jira_fields(payload, source)
     created = jira.post("/rest/api/3/issue", {"fields": fields})
     key = created["key"]
+    watcher_tokens = payload.get("watchers")
+    if watcher_tokens:
+        added = watchers.add_watchers(key, watcher_tokens)
+        print("watchers", ",".join(u["id"] for u in added))
     print(key)
     print(f"{jira.SITE}/browse/{key}")
     return 0

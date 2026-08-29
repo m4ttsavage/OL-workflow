@@ -14,6 +14,7 @@ python scripts/associate_screens.py   # add fields to VDSD JSM screens
 python scripts/associate_rnd_fields.py # associate the same fields with team-managed RND
 python scripts/update_workflows.py    # Promote to Engineering + In Review
 python scripts/seed_jsm_customers.py  # dummy orgs + plus-addressed customers on VDSD
+python scripts/seed_demo.py --file config/seed-requests-batch-2.json  # next VDSD batch + watchers
 
 # 2. Submit (local)
 python scripts/submit_intake.py path/to/payload.json --source vdsd

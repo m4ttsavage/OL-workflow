@@ -71,7 +71,7 @@ class IntakePayloadTests(unittest.TestCase):
         self.assertEqual(fields["customfield_10088"], {"id": "10141"})
         self.assertEqual(fields["customfield_10090"], {"id": "10143"})
         self.assertEqual(fields["customfield_10086"], 240000.0)
-        self.assertEqual(fields["customfield_10002"], [{"id": "1"}])
+        self.assertEqual(fields["customfield_10002"], [1])
 
     def test_resolve_source(self):
         import submit_intake
@@ -147,6 +147,34 @@ class JsmCustomerTests(unittest.TestCase):
             self.assertTrue(payload["requester_email"].startswith("matthewmsavage+"))
             self.assertTrue(payload["requester_email"].endswith("@gmail.com"))
             self.assertIn(jsm_customers.org_slug(payload["organization"]), payload["requester_email"])
+
+
+class InternalWatcherTests(unittest.TestCase):
+    def test_resolve_known_users(self):
+        import watchers
+
+        ted = watchers.resolve("ted")
+        self.assertEqual(ted["slack_user_id"], "U0BTAN0LM3N")
+        lem = watchers.resolve("Lem Hewitt")
+        self.assertEqual(lem["id"], "lem")
+        many = watchers.resolve_many(["ted", "linda", "ted"])
+        self.assertEqual([u["id"] for u in many], ["ted", "linda"])
+
+    def test_unknown_watcher_rejected(self):
+        import watchers
+
+        with self.assertRaises(ValueError):
+            watchers.resolve_many(["not-a-person"])
+
+    def test_batch2_watchers_and_half_promote(self):
+        import watchers
+
+        self.assertEqual(len(BATCH2), 6)
+        self.assertEqual(sum(1 for item in BATCH2 if item.get("promote")), 3)
+        for item in BATCH2:
+            resolved = watchers.resolve_many(item["watchers"])
+            self.assertGreaterEqual(len(resolved), 2)
+            self.assertIn("ted", [u["id"] for u in resolved])
 
 
 if __name__ == "__main__":
