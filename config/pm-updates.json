@@ -1,0 +1,105 @@
+{
+  "notes": "Ted Crisp (jira_admin_token / Slack U0BTAN0LM3N) PM pass for batch-2. Transitions are applied by name. Comments are Ted only; Slack replies @mention watchers. No PHI.",
+  "slack_channel_id": "C0BT787UKGS",
+  "steps": [
+    {
+      "key": "RND-7",
+      "transition": "To Do"
+    },
+    {
+      "key": "RND-7",
+      "transition": "In Progress"
+    },
+    {
+      "key": "RND-7",
+      "transition": "Done",
+      "comment": "Launchpad checklist shipped in PR #12; closing engineering work."
+    },
+    {
+      "key": "VDSD-11",
+      "transition": "Start"
+    },
+    {
+      "key": "VDSD-11",
+      "transition": "Promote to Engineering",
+      "comment": "Promoted to engineering. Launchpad checklist shipped in PR #12; brand can schedule go-live.",
+      "slack_parent_key": "VDSD-11",
+      "slack_mention": "U0BU5926QMN",
+      "slack_text": "Launchpad checklist shipped in PR #12. RND-7 is Done; VDSD-11 is promoted so brand can schedule go-live. <@U0BU5926QMN> can pick a window with Cedar Ridge."
+    },
+    {
+      "key": "RND-8",
+      "transition": "To Do"
+    },
+    {
+      "key": "RND-8",
+      "transition": "In Progress",
+      "comment": "Reminders scoped with Veronica; implementation in PR #14 still in progress."
+    },
+    {
+      "key": "VDSD-13",
+      "transition": "Start"
+    },
+    {
+      "key": "VDSD-13",
+      "transition": "Promote to Engineering",
+      "comment": "Promoted to engineering. Reminders scoped with Veronica; implementation in PR #14 still in progress.",
+      "slack_parent_key": "VDSD-13",
+      "slack_mention": "U0BT4LBKMU3",
+      "slack_text": "Reminders scoped with Veronica. RND-8 is In Progress (PR #14); VDSD-13 is promoted. <@U0BT4LBKMU3> has product on the remaining reminder copy."
+    },
+    {
+      "key": "RND-9",
+      "transition": "To Do"
+    },
+    {
+      "key": "RND-9",
+      "transition": "In Progress",
+      "comment": "Safari upload fix merged in PR #13; waiting on brand to confirm mobile."
+    },
+    {
+      "key": "VDSD-15",
+      "transition": "Start"
+    },
+    {
+      "key": "VDSD-15",
+      "transition": "Promote to Engineering",
+      "comment": "Promoted to engineering. Safari upload fix merged in PR #13; waiting on brand to confirm mobile.",
+      "slack_parent_key": "VDSD-15",
+      "slack_mention": "U0BT4L8T5PD",
+      "slack_text": "Safari upload fix merged in PR #13. RND-9 is In Progress; VDSD-15 is promoted. <@U0BT4L8T5PD> can ping Lumen to confirm mobile."
+    },
+    {
+      "key": "VDSD-12",
+      "transition": "Start"
+    },
+    {
+      "key": "VDSD-12",
+      "transition": "Pending",
+      "comment": "Need the two care-ops work emails before we can grant seats.",
+      "slack_parent_key": "VDSD-12",
+      "slack_mention": "U0BU5926QMN",
+      "slack_text": "Need the two care-ops work emails before we can grant seats. VDSD-12 is Pending. <@U0BU5926QMN> can collect those from Cedar Ridge."
+    },
+    {
+      "key": "VDSD-14",
+      "transition": "Start",
+      "comment": "Ops queue filter stays on the desk; not an RND item. Phil can spec columns.",
+      "slack_parent_key": "VDSD-14",
+      "slack_mention": "U0BT8V9E3B8",
+      "slack_text": "Ops queue filter stays on the desk; not an RND item. VDSD-14 is In Progress. <@U0BT8V9E3B8> can spec the columns."
+    },
+    {
+      "key": "VDSD-16",
+      "transition": "Start"
+    },
+    {
+      "key": "VDSD-16",
+      "transition": "Done",
+      "comment": "Point to existing approved-claims list; no engineering ticket.",
+      "slack_parent_key": "VDSD-16",
+      "slack_mention": "U0BU5926QMN",
+      "slack_text": "Point to the existing approved-claims list; no engineering ticket. VDSD-16 is Done. <@U0BU5926QMN> can send Atlas the list."
+    }
+  ]
+}

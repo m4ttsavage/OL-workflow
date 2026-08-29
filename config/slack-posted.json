@@ -3,6 +3,7 @@
   "channel": "#dev-updates",
   "posted_at": "2026-08-28T05:04:00Z",
   "batch_2_posted_at": "2026-08-28T14:23:00Z",
+  "pm_replies_posted_at": "2026-08-28T20:12:03Z",
   "parents": {
     "VDSD-1": {
       "ts": "1787893428.521679",
@@ -69,6 +70,36 @@
     "RND-9": {
       "thread_of": "VDSD-15",
       "url": "https://veridian-dynamics-ltd.slack.com/archives/C0BT787UKGS/p1787927043919299?thread_ts=1787927029.946279"
+    },
+    "pm-VDSD-11": {
+      "thread_of": "VDSD-11",
+      "ts": "1787947923.638719",
+      "url": "https://veridian-dynamics-ltd.slack.com/archives/C0BT787UKGS/p1787947923638719?thread_ts=1787927029.285219"
+    },
+    "pm-VDSD-12": {
+      "thread_of": "VDSD-12",
+      "ts": "1787947924.289329",
+      "url": "https://veridian-dynamics-ltd.slack.com/archives/C0BT787UKGS/p1787947924289329?thread_ts=1787927029.415619"
+    },
+    "pm-VDSD-13": {
+      "thread_of": "VDSD-13",
+      "ts": "1787947923.816659",
+      "url": "https://veridian-dynamics-ltd.slack.com/archives/C0BT787UKGS/p1787947923816659?thread_ts=1787927029.569799"
+    },
+    "pm-VDSD-14": {
+      "thread_of": "VDSD-14",
+      "ts": "1787947924.485829",
+      "url": "https://veridian-dynamics-ltd.slack.com/archives/C0BT787UKGS/p1787947924485829?thread_ts=1787927029.732249"
+    },
+    "pm-VDSD-15": {
+      "thread_of": "VDSD-15",
+      "ts": "1787947924.050519",
+      "url": "https://veridian-dynamics-ltd.slack.com/archives/C0BT787UKGS/p1787947924050519?thread_ts=1787927029.946279"
+    },
+    "pm-VDSD-16": {
+      "thread_of": "VDSD-16",
+      "ts": "1787947924.677329",
+      "url": "https://veridian-dynamics-ltd.slack.com/archives/C0BT787UKGS/p1787947924677329?thread_ts=1787927030.075759"
     }
   },
   "watcher_dms": {
