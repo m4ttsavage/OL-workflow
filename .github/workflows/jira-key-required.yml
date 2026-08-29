@@ -1,4 +1,4 @@
-name: Require VDV Jira key
+name: Require RND Jira key
 
 on:
   pull_request:
@@ -8,7 +8,7 @@ jobs:
   jira-key:
     runs-on: ubuntu-latest
     steps:
-      - name: Fail if VDV-123 is missing
+      - name: Fail if RND-123 (or legacy VDV-123) is missing
         env:
           TITLE: ${{ github.event.pull_request.title }}
           BODY: ${{ github.event.pull_request.body }}
@@ -16,9 +16,14 @@ jobs:
         run: |
           set -euo pipefail
           blob="$TITLE $BODY $BRANCH"
-          if ! grep -Eq 'VDV-[0-9]+' <<<"$blob"; then
-            echo "PRs must reference a VDV issue key in the title, body, or branch (e.g. VDV-12)."
-            echo "Optional customer key: VDSD-45"
-            exit 1
+          if grep -Eq 'RND-[0-9]+' <<<"$blob"; then
+            echo "Found RND key in PR metadata."
+            exit 0
           fi
-          echo "Found VDV key in PR metadata."
+          if grep -Eq 'VDV-[0-9]+' <<<"$blob"; then
+            echo "Found legacy VDV key in PR metadata."
+            exit 0
+          fi
+          echo "PRs must reference an RND issue key in the title, body, or branch (e.g. RND-12)."
+          echo "Legacy VDV-12 is still accepted. Optional customer key: VDSD-45"
+          exit 1

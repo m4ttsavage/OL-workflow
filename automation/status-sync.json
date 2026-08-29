@@ -1,12 +1,12 @@
 {
-  "name": "VDV status comments on VDSD",
-  "description": "When a VDV issue linked as implements a VDSD request moves to In Review or Done, comment on the VDSD issue.",
+  "name": "RND status comments on VDSD",
+  "description": "When an RND issue linked as implements a VDSD request moves to In Review or Done, comment on the VDSD issue.",
   "state": "ENABLED",
   "trigger": {
     "type": "jira.issue.event.trigger:transitioned",
     "value": { "to_status": ["In Review", "Done"] }
   },
-  "conditions": [{ "type": "jira.issues.scoped", "project": "VDV" }],
+  "conditions": [{ "type": "jira.issues.scoped", "project": "RND" }],
   "actions": [
     {
       "type": "jira.issue.comment",

@@ -35,7 +35,7 @@
     <div class="banner">Do not include patient names, dates of birth, medical record numbers, diagnoses, or clinical notes.</div>
     <div id="chooser" class="chooser">
       <a class="card" href="#customer"><strong>Customer request</strong><p>White-label brand intake → VDSD</p></a>
-      <a class="card" href="#internal"><strong>Employee request</strong><p>Internal intake → VDV</p></a>
+      <a class="card" href="#internal"><strong>Employee request</strong><p>Internal intake → RND</p></a>
     </div>
     <form id="form" hidden>
       <p><a href="#">← All intakes</a></p>
@@ -95,7 +95,7 @@
     </form>
     <div id="result" hidden>
       <h3>Payload</h3>
-      <p>Submit with <code>python scripts/submit_intake.py payload.json --source vdsd|vdv</code>, or GitHub <strong>Actions → Submit intake</strong> (repo secrets, no token in this page).</p>
+      <p>Submit with <code>python scripts/submit_intake.py payload.json --source vdsd|rnd</code>, or GitHub <strong>Actions → Submit intake</strong> (repo secrets, no token in this page).</p>
       <pre id="payload"></pre>
     </div>
   </main>
@@ -133,7 +133,7 @@
       $("form").hidden = !(customer || internal);
       $("result").hidden = true;
       if (!(customer || internal)) return;
-      $("form-title").textContent = customer ? "Customer request (VDSD)" : "Employee request (VDV)";
+      $("form-title").textContent = customer ? "Customer request (VDSD)" : "Employee request (RND)";
       fill($("organization"), customer
         ? (tax?.organizations?.customer || ["Northstar Wellness","Harbor Peak Health","Lumen Clinic","Atlas Fitness Care","Cedar Ridge Telehealth","Summit Peak Wellness","Other"])
         : (tax?.organizations?.internal || ["IT","Clinical Ops","CS","RCM","People","Finance","Engineering","Veridian Dynamics Internal"]));
@@ -160,7 +160,7 @@
     ["request_type","clinical_program","organization","impact_bucket"].forEach(id => $(id).addEventListener("change", sync));
     $("form").addEventListener("submit", (e) => {
       e.preventDefault();
-      const source = location.hash === "#internal" ? "vdv" : "vdsd";
+      const source = location.hash === "#internal" ? "rnd" : "vdsd";
       if (source === "vdsd" && !$("no_phi_ack").checked) {
         alert("Confirm the request contains no patient or clinical data.");
         return;

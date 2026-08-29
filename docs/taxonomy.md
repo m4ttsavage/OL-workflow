@@ -1,7 +1,7 @@
 # Veridian Dynamics intake taxonomy
 
 Source of truth: [`config/taxonomy.json`](../config/taxonomy.json).
-Customer project: **VDSD**. Internal/engineering project: **VDV**. Unused: KAN, VD, SAM1.
+Customer project: **VDSD**. Engineering project: **RND** (team-managed software). Unused: KAN, VD, SAM1, **VDV**.
 
 Do not collect patient or clinical data. Name, work email, and organization only.
 
@@ -9,16 +9,16 @@ Do not collect patient or clinical data. Name, work email, and organization only
 
 Always required. Independent of Clinical Program.
 
-| ID | Label | Program required | Default VDV issue type |
+| ID | Label | Program required | RND work type |
 | --- | --- | --- | --- |
-| Feature | Feature | yes | Task |
+| Feature | Feature | yes | Feature |
 | Bug | Bug | yes | Task |
-| Incident | Incident | yes | Submit a request or incident |
+| Incident | Incident | yes | Task |
 | Operational_Change | Operational change | yes | Task |
 | Access | Access | no | Task |
-| Question | Question | yes | Ask a question |
+| Question | Question | yes | Task |
 | Compliance | Compliance | yes | Task |
-| New_Program_Launch | New program launch | yes | Task |
+| New_Program_Launch | New program launch | yes | Feature |
 | Pharmacy_Fulfillment | Pharmacy / fulfillment | yes | Task |
 | Clinical_Ops | Clinical operations | yes | Task |
 | Internal_IT | Internal IT | no | Task |
@@ -66,7 +66,7 @@ When value is required, capture **Business Value USD** (annualized estimate) and
 ## Organization
 
 - **VDSD (customer):** Northstar Wellness, Harbor Peak Health, Lumen Clinic, Atlas Fitness Care, Cedar Ridge Telehealth, Summit Peak Wellness, Other
-- **VDV (internal):** IT, Clinical Ops, CS, RCM, People, Finance, Engineering, Veridian Dynamics Internal
+- **RND (internal):** IT, Clinical Ops, CS, RCM, People, Finance, Engineering, Veridian Dynamics Internal
 
 JSM Organizations (portal sharing) and plus-addressed customers live in [`config/jsm-customers.json`](../config/jsm-customers.json). Seed with `python scripts/seed_jsm_customers.py`. Emails are `matthewmsavage+[org-slug]@gmail.com` (and `…-[role]` for a second contact). Live IDs after a seed: [`config/jsm-customers-created.json`](../config/jsm-customers-created.json).
 
@@ -79,11 +79,11 @@ JSM Organizations (portal sharing) and plus-addressed customers live in [`config
 | P3 | Medium |
 | P4 | Low |
 
-## Label encoding (until custom fields exist)
+## Label encoding
 
 Use these labels on every intake issue so both projects stay queryable:
 
-- `source:vdsd` or `source:vdv`
+- `source:vdsd` or `source:rnd` (legacy `source:vdv` on leftover VDV issues)
 - `type:{Request Type id}`
 - `program:{Clinical Program id}`
 - `sub:{Subprogram id}`

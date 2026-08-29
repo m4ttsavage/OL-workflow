@@ -1,0 +1,20 @@
+{
+  "fields": {
+    "project": { "key": "RND" },
+    "issuetype": { "name": "Feature" },
+    "summary": "[VDSD-1] Coaching drop-off prompts",
+    "priority": { "name": "High" },
+    "customfield_10078": "Ava Chen",
+    "customfield_10082": { "id": "10062" },
+    "customfield_10088": { "id": "10141" },
+    "customfield_10089": "VDSD-1",
+    "labels": [
+      "source:vdsd",
+      "type:Feature",
+      "program:Medical_Weight_Loss",
+      "sub:Care_Coaching",
+      "impact:Revenue",
+      "org:northstar-wellness"
+    ]
+  }
+}

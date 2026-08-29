@@ -1,28 +1,32 @@
 # Integrations
 
 ```
-JSM portal → VDSD → (promote) → VDV → GitHub DummyCompany
+JSM portal → VDSD → (promote) → RND → GitHub DummyCompany
                  \                      /
                   → Slack #dev-updates (+ watcher DMs)
+
+Internal form → RND
 ```
 
-## JSM ↔ VDV
+**VDV** (Veridian Dynamics v2) is a leftover JSM project. Do not promote customer work there.
+
+## JSM ↔ RND
 
 - Stay in VDSD until triage. Only engineering-bound work is promoted.
 - Link type: **Polaris work item link** (`implements` / `is implemented by`).
 - Counterpart Key + labels `source:*`.
-- Script: `scripts/promote_request.py`.
-- Automation import: `automation/promote-to-vdv.json`.
+- Script: `scripts/promote_request.py` (Feature or New program launch → RND **Feature**; everything else → **Task**).
+- Automation import: `automation/promote-to-rnd.json` (always Task if imported as-is; prefer the script for work-type mapping and custom fields).
 
 ## GitHub
 
 Target repo: `m4ttsavage/DummyCompany` — **does not exist**, and GitHub MCP (`m4ttsavage`) returns **403** on `user/repos` create (`Resource not accessible by personal access token`). Engineering templates and demo PRs live in this control-plane repo (`m4ttsavage/OL-workflow`) until DummyCompany is created under that account.
 
-- Branch: `VDV-123-short-slug`
-- PR template requires `Jira: VDV-123` and optional `JSM: VDSD-45`
-- Workflow `.github/workflows/jira-key-required.yml` fails PRs without `VDV-\d+`
-- Workflow `.github/workflows/jira-comment.yml` comments on the VDV issue on PR open/merge and on release
-- GitHub-for-Jira is already installed; map the engineering repo to **VDV**
+- Branch: `RND-123-short-slug`
+- PR template requires `Jira: RND-123` and optional `JSM: VDSD-45`
+- Workflow `.github/workflows/jira-key-required.yml` fails PRs without `RND-\d+` (legacy `VDV-\d+` still passes)
+- Workflow `.github/workflows/jira-comment.yml` comments on the RND (or legacy VDV) issue on PR open/merge and on release
+- GitHub-for-Jira is already installed; map the engineering repo to **RND**
 
 ## Slack
 
@@ -38,7 +42,7 @@ Customers submit in the VDSD Help Center (service desk id `1`):
 
 - Portal: https://veridian-dynamics.atlassian.net/servicedesk/customer/portal/1
 - Request types live under **VDSD → Channels → Portal** (see [`docs/ui-runbooks.md`](ui-runbooks.md))
-- Internal employees file in project **VDV**
+- Internal employees file in project **RND**
 
 Operator fallback (not public): local form [`apps/intake/`](../apps/intake/) plus **Actions → Submit intake** (`workflow_dispatch`) with repo secrets `JIRA_EMAIL` + `JIRA_API_TOKEN`.
 
@@ -46,7 +50,7 @@ Operator fallback (not public): local form [`apps/intake/`](../apps/intake/) plu
 
 | System | MCP | Role |
 | --- | --- | --- |
-| Atlassian | ready | Issue create/edit/link/transition |
+| Atlassian | ready | Issue CRUD, links, transitions |
 | GitHub | ready as m4ttsavage | Files, PRs; cannot create DummyCompany (403) |
 | Slack | error at implement | DMs / channel posts |
 

@@ -1,8 +1,8 @@
 {
   "type": { "name": "Polaris work item link" },
   "inwardIssue": { "key": "VDSD-1" },
-  "outwardIssue": { "key": "VDV-1" },
+  "outwardIssue": { "key": "RND-5" },
   "comment": {
-    "body": "VDV implements this customer request."
+    "body": "RND implements this customer request."
   }
 }

@@ -1,6 +1,6 @@
 # changelog categories for GitHub generated release notes
 changelog:
   categories:
-    - title: Engineering (VDV)
+    - title: Engineering (RND)
       labels:
         - "*"

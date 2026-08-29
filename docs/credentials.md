@@ -10,8 +10,8 @@ Never commit values. Never put tokens in browser JavaScript.
 | `ATLASSIAN_BASE_URL` | env | `https://veridian-dynamics.atlassian.net` |
 | `ATLASSIAN_CLOUD_ID` | env | `2cddf272-587f-44fe-92ed-d157674c74f1` |
 | `JSM_PROJECT_KEY` | env | `VDSD` |
-| `JIRA_PROJECT_KEY` | env | `VDV` |
-| GitHub Actions `JIRA_EMAIL` + `JIRA_API_TOKEN` | This repo Actions secrets | **Submit intake** workflow plus PR/release comments on VDV issues |
+| `JIRA_PROJECT_KEY` | env | `RND` |
+| GitHub Actions `JIRA_EMAIL` + `JIRA_API_TOKEN` | This repo Actions secrets | **Submit intake** workflow plus PR/release comments on RND issues |
 | `SLACK_BOT_TOKEN` | env (optional) | Watcher DMs if Slack MCP is down |
 | Slack channel | n/a | `#dev-updates` / `C0BT787UKGS` |
 
@@ -20,7 +20,7 @@ Never commit values. Never put tokens in browser JavaScript.
 Customers use the [JSM portal](https://veridian-dynamics.atlassian.net/servicedesk/customer/portal/1). For operator seeding after copying JSON from `apps/intake/`:
 
 1. Repo **Settings → Secrets and variables → Actions**: `JIRA_EMAIL` (`matthewmsavage@gmail.com`) and `JIRA_API_TOKEN` (classic `ATATT…` token).
-2. **Actions → Submit intake → Run workflow**. Choose `vdsd` or `vdv` and paste the JSON (one line / minified is fine).
+2. **Actions → Submit intake → Run workflow**. Choose `vdsd` or `rnd` and paste the JSON (one line / minified is fine).
 3. Or from a machine with `gh`:
 
 ```bash

@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
-"""Add intake custom fields to VDSD/VDV JSM screens."""
+"""Add intake custom fields to VDSD JSM screens.
+
+Team-managed RND has no classic screens — use scripts/associate_rnd_fields.py.
+"""
 
 from __future__ import annotations
 

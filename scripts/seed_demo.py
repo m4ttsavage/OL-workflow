@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Seed dummy VDSD then VDV requests from config/seed-requests.json via REST."""
+"""Seed dummy VDSD then RND requests from config/seed-requests.json via REST."""
 
 from __future__ import annotations
 

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Promote a VDSD issue to VDV and link implements / is implemented by."""
+"""Promote a VDSD issue to RND (engineering) and link implements / is implemented by."""
 
 from __future__ import annotations
 
@@ -9,15 +9,25 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import field_ids  # noqa: E402
+import intake_payload  # noqa: E402
 import jira_client as jira  # noqa: E402
 
 IDS = field_ids.load()
 CUSTOM_KEYS = ",".join(rec["id"] for rec in IDS.values())
+ENGINEERING_KEY = intake_payload.TAX["projects"]["internal"]["key"]
 
 
 def issue(key: str) -> dict:
     extra = f",{CUSTOM_KEYS}" if CUSTOM_KEYS else ""
     return jira.get(f"/rest/api/3/issue/{key}?fields=summary,description,priority,labels,issuetype{extra}")
+
+
+def request_type_id(src_fields: dict) -> str | None:
+    fid = field_ids.field_id(IDS, "Intake Request Type")
+    val = src_fields.get(fid) if fid else None
+    if isinstance(val, dict):
+        return val.get("value")
+    return None
 
 
 def copy_custom_fields(src_fields: dict) -> dict:
@@ -53,9 +63,10 @@ def main() -> int:
     summary = fields["summary"]
     if not summary.startswith("["):
         summary = f"[{args.vdsd_key}] {summary}"
+    issue_type = intake_payload.engineering_issue_type(request_type_id(fields))
     body_fields = {
-        "project": {"key": "VDV"},
-        "issuetype": {"name": "Task"},
+        "project": {"key": ENGINEERING_KEY},
+        "issuetype": {"name": issue_type},
         "summary": summary[:255],
         "priority": fields.get("priority") or {"name": "Medium"},
         "labels": labels,
@@ -63,22 +74,22 @@ def main() -> int:
     }
     body_fields.update(copy_custom_fields(fields))
     created = jira.post("/rest/api/3/issue", {"fields": body_fields})
-    vdv_key = created["key"]
-    labels.append(f"counterpart:{vdv_key}")
-    jira.put(f"/rest/api/3/issue/{vdv_key}", {"fields": {"labels": labels}})
+    eng_key = created["key"]
+    labels.append(f"counterpart:{eng_key}")
+    jira.put(f"/rest/api/3/issue/{eng_key}", {"fields": {"labels": labels}})
     src_labels = list(fields.get("labels") or [])
-    tag = f"counterpart:{vdv_key}"
+    tag = f"counterpart:{eng_key}"
     if tag not in src_labels:
         src_labels.append(tag)
         jira.put(f"/rest/api/3/issue/{args.vdsd_key}", {"fields": {"labels": src_labels}})
-    set_counterpart(args.vdsd_key, vdv_key)
-    set_counterpart(vdv_key, args.vdsd_key)
+    set_counterpart(args.vdsd_key, eng_key)
+    set_counterpart(eng_key, args.vdsd_key)
     jira.post(
         "/rest/api/3/issueLink",
         {
             "type": {"name": "Polaris work item link"},
             "inwardIssue": {"key": args.vdsd_key},
-            "outwardIssue": {"key": vdv_key},
+            "outwardIssue": {"key": eng_key},
         },
     )
     comment = {
@@ -91,7 +102,7 @@ def main() -> int:
                     "content": [
                         {
                             "type": "text",
-                            "text": f"Promoted to engineering {vdv_key} (implements this request).",
+                            "text": f"Promoted to engineering {eng_key} (implements this request).",
                         }
                     ],
                 }
@@ -99,8 +110,8 @@ def main() -> int:
         }
     }
     jira.post(f"/rest/api/3/issue/{args.vdsd_key}/comment", comment)
-    print(vdv_key)
-    print(f"{jira.SITE}/browse/{vdv_key}")
+    print(eng_key)
+    print(f"{jira.SITE}/browse/{eng_key}")
     return 0
 
 

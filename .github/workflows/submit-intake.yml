@@ -4,11 +4,12 @@ on:
   workflow_dispatch:
     inputs:
       source:
-        description: Customer (vdsd) or internal (vdv). Must match the form you used.
+        description: Customer (vdsd) or engineering (rnd). vdv is the leftover service desk.
         required: true
         type: choice
         options:
           - vdsd
+          - rnd
           - vdv
         default: vdsd
       payload:

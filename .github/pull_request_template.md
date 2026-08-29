@@ -1,8 +1,10 @@
 ## Summary
 
-Jira: VDV-___
+Jira: RND-___
 
 JSM (if promoted from a customer request): VDSD-___
+
+Legacy engineering keys (`VDV-n`) are still accepted by CI.
 
 ## What changed
 

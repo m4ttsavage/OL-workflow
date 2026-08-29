@@ -106,7 +106,7 @@ def main() -> int:
     add_options(sub["id"], context_id(sub["id"]), subs)
     add_options(impact["id"], context_id(impact["id"]), [i["id"] for i in TAX["impact_buckets"]])
     add_options(vtype["id"], context_id(vtype["id"]), [v["id"] for v in TAX["value_types"]])
-    add_options(source["id"], context_id(source["id"]), ["vdsd", "vdv"])
+    add_options(source["id"], context_id(source["id"]), ["vdsd", "vdv", "rnd"])
     add_options(phi["id"], context_id(phi["id"]), ["Yes", "No"])
 
     created = {
@@ -146,7 +146,8 @@ def main() -> int:
     out = ROOT / "config" / "field-ids.json"
     out.write_text(json.dumps(mapping, indent=2) + "\n")
     print("wrote", out)
-    print("Associate these fields to VDSD and VDV screens: python scripts/associate_screens.py")
+    print("Associate VDSD screens: python scripts/associate_screens.py")
+    print("Associate RND (team-managed): python scripts/associate_rnd_fields.py")
     return 0
 
 
